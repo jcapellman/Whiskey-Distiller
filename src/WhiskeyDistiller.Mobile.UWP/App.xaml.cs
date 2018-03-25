@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using WhiskeyDistiller.library.Common;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -14,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+
+using Ninject;
 
 namespace WhiskeyDistiller.Mobile.UWP
 {
@@ -29,6 +32,9 @@ namespace WhiskeyDistiller.Mobile.UWP
         public App()
         {
             this.InitializeComponent();
+
+            IKernel kernel = new StandardKernel(new IocModule());
+
             this.Suspending += OnSuspending;
         }
 
