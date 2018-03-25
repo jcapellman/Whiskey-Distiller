@@ -1,4 +1,4 @@
-﻿using WhiskeyDistiller.Mobile.ViewModels;
+﻿using WhiskeyDistiller.library.ViewModels;
 
 using Xamarin.Forms;
 
