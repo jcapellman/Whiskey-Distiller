@@ -20,7 +20,7 @@ namespace WhiskeyDistiller.library.ViewModels
         {
             IoC.Database.Add(new Games
             {
-                Name = "Awesome Game",
+                DistilleryName = "Awesome Game",
                 Cash = 1000,
                 GameQuarter = 1,
                 GameYear = 2018
