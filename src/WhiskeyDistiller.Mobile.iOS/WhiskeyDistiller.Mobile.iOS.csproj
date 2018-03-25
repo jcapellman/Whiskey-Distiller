@@ -144,7 +144,13 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.296286-pre2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhiskeyDistiller.library\WhiskeyDistiller.library.csproj">
+      <Project>{55ddff6a-1956-41db-9a5d-0ca2fbec60d6}</Project>
+      <Name>WhiskeyDistiller.library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\WhiskeyDistiller.Mobile\WhiskeyDistiller.Mobile.projitems" Label="Shared" />
