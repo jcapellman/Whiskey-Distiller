@@ -2,6 +2,12 @@
 {
     public class Games : BaseTable
     {
-        public string Name { get; set; }
+        public string DistilleryName { get; set; }
+
+        public int GameYear { get; set; }
+
+        public int GameQuarter { get; set; }
+
+        public double Cash { get; set; }
     }
 }
