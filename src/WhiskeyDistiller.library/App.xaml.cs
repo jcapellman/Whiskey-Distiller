@@ -1,7 +1,8 @@
-﻿using System;
+﻿using WhiskeyDistiller.library.Views;
+
 using Xamarin.Forms;
 
-namespace WhiskeyDistiller.Mobile
+namespace WhiskeyDistiller.library
 {
 	public partial class App : Application
 	{
