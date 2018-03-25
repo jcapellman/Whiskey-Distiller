@@ -1,4 +1,8 @@
-﻿using SQLite;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+
+using SQLite;
 
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
@@ -16,6 +20,34 @@ namespace WhiskeyDistiller.library.Implementations
 
                 return true;
             }
+        }
+
+        public bool CreateTable(Type tableType)
+        {
+            using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
+            {
+                sqlConnection.CreateTable(tableType);
+
+                return true;
+            }
+        }
+
+        public bool InitializeDB()
+        {
+            var tables = Assembly.GetAssembly(typeof(IDatabase)).GetTypes().Where(a => a.BaseType == typeof(BaseTable)).ToList();
+
+            // No Tables found
+            if (!tables.Any())
+            {
+                return true;
+            }
+
+            foreach (var table in tables)
+            {
+                CreateTable(table);
+            }
+
+            return true;
         }
     }
 }
