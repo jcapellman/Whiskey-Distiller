@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27520.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WhiskeyDistiller.Mobile", "WhiskeyDistiller.Mobile\WhiskeyDistiller.Mobile.shproj", "{FF311577-8FB4-4D46-B9BC-E039E101BAA1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiskeyDistiller.Mobile.UWP", "WhiskeyDistiller.Mobile.UWP\WhiskeyDistiller.Mobile.UWP.csproj", "{9848A658-3B06-4185-A525-3549383B3586}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiskeyDistiller.library", "WhiskeyDistiller.library\WhiskeyDistiller.library.csproj", "{55DDFF6A-1956-41DB-9A5D-0CA2FBEC60D6}"
@@ -12,7 +10,6 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WhiskeyDistiller.Mobile\WhiskeyDistiller.Mobile.projitems*{9848a658-3b06-4185-a525-3549383b3586}*SharedItemsImports = 4
-		WhiskeyDistiller.Mobile\WhiskeyDistiller.Mobile.projitems*{ff311577-8fb4-4d46-b9bc-e039e101baa1}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
