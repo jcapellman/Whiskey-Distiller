@@ -1,30 +1,26 @@
 ﻿using System.Windows.Input;
 
-using WhiskeyDistiller.library.Common;
-using WhiskeyDistiller.library.DAL.Tables;
-
 using Xamarin.Forms;
+
+using WhiskeyDistiller.library.Views;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
     public class MainPageVM : BaseVM
     {
-        public ICommand NewGameCommand { get; private set; }
-
-        public MainPageVM()
+        public ICommand NewGameCommand
         {
-            NewGameCommand = new Command(NewGame);
+            get
+            {
+                return new Command(async () =>
+                {
+                    await NavigateToAsync<NewGamePage>();
+                });
+            }
         }
 
-        public void NewGame()
-        {
-            IoC.Database.Add(new Games
-            {
-                DistilleryName = "Awesome Game",
-                Cash = 1000,
-                GameQuarter = 1,
-                GameYear = 2018
-            });
+        public MainPageVM(INavigation navigation) : base(navigation)
+        {         
         }
     }
 }
