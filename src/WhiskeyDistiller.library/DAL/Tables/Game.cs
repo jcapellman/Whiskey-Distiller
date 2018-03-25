@@ -1,6 +1,6 @@
 ﻿namespace WhiskeyDistiller.library.DAL.Tables
 {
-    public class Games : BaseTable
+    public class Game : BaseTable
     {
         public string DistilleryName { get; set; }
 
