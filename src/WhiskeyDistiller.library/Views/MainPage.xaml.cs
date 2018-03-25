@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace WhiskeyDistiller.Mobile
+namespace WhiskeyDistiller.library.Views
 {
 	public partial class MainPage : ContentPage
 	{
@@ -10,7 +10,7 @@ namespace WhiskeyDistiller.Mobile
 		{
 			InitializeComponent();
 
-            BindingContext = new MainPageVM();
+            BindingContext = new MainPageVM(this.Navigation);
 		}
 	}
 }

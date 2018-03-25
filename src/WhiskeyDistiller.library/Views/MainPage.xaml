@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:WhiskeyDistiller.Mobile"
+             xmlns:local="clr-namespace:WhiskeyDistiller.library.Views"
              xmlns:vm="using:WhiskeyDistiller.library.ViewModels;assembly=WhiskeyDistiller.library"
-             x:Class="WhiskeyDistiller.Mobile.MainPage">
+             x:Class="WhiskeyDistiller.library.Views.MainPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
