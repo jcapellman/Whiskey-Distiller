@@ -3,6 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhiskeyDistiller.library.App">
 	<Application.Resources>
-    
-	</Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="backgroundColor">#33302E</Color>
+            <Color x:Key="textColor">White</Color>
+
+            <Style x:Key="Page" TargetType="Grid">
+            </Style>
+
+            <Style x:Key="Footer" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Margin" Value="20,20,20,20" />
+            </Style>
+
+            <Style x:Key="BackButton" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+
+            <Style x:Key="MenuButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+
+            <Style x:Key="PageHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20,20,0,20" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

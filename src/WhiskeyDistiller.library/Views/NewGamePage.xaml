@@ -3,6 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhiskeyDistiller.library.Views.NewGamePage">
     <ContentPage.Content>
-        <Button Text="Return to Main Menu"  Command="{Binding GoBackCommand}" />
+        <Grid Style="{StaticResource Page}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="New Game" />
+
+            <Grid Grid.Row="1">
+                
+            </Grid>
+            
+            <Grid Grid.Row="2" Style="{StaticResource Footer}">
+                <Button Text="Return to Main Menu" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
