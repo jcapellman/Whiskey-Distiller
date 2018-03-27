@@ -6,13 +6,13 @@ using Xamarin.Forms.Xaml;
 namespace WhiskeyDistiller.library.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewGamePage : ContentPage
+	public partial class AboutPage : ContentPage
 	{
-		public NewGamePage ()
+		public AboutPage ()
 		{
 			InitializeComponent ();
 
-            BindingContext = new NewGamePageVM(Navigation);
+            BindingContext = new AboutPageVM(Navigation);
 		}
 	}
 }
