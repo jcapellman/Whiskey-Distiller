@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhiskeyDistiller.library.Views.OptionsPage">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource Page}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="Options" />
+
+            <Grid Grid.Row="1">
+
+            </Grid>
+
+            <Grid Grid.Row="2" Style="{StaticResource Footer}">
+                <Button Text="Return to Main Menu" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
