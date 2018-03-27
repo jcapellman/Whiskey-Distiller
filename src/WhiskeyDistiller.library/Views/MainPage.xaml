@@ -10,9 +10,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Text="Whiskey Distiller" />
+        <Label Grid.Row="0" FontSize="50" Margin="0,40,0,40" TextColor="White" HorizontalOptions="Center" Text="Whiskey Distiller" />
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" VerticalOptions="Start">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -21,9 +21,9 @@
             </Grid.RowDefinitions>
 
             <Button Grid.Row="0" Style="{StaticResource MenuButton}" Command="{Binding NewGameCommand}" Text="New Game" />
-            <Button Grid.Row="1" Style="{StaticResource MenuButton}" Text="Load Game" />
-            <Button Grid.Row="2" Style="{StaticResource MenuButton}" Text="Options" />
-            <Button Grid.Row="3" Style="{StaticResource MenuButton}" Text="About" />
+            <Button Grid.Row="1" Style="{StaticResource MenuButton}" Command="{Binding LoadGameCommand}" Text="Load Game" />
+            <Button Grid.Row="2" Style="{StaticResource MenuButton}" Command="{Binding OptionsCommand}" Text="Options" />
+            <Button Grid.Row="3" Style="{StaticResource MenuButton}" Command="{Binding AboutCommand}" Text="About" />
         </Grid>
     </Grid>
 </ContentPage>
