@@ -8,6 +8,7 @@
             <Color x:Key="textColor">White</Color>
 
             <Style x:Key="Page" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
             </Style>
 
             <Style x:Key="Footer" TargetType="Grid">
@@ -25,7 +26,8 @@
 
             <Style x:Key="MenuButton" TargetType="Button">
                 <Setter Property="WidthRequest" Value="200" />
-                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
             </Style>
 
