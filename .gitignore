@@ -2,3 +2,7 @@
 bin/
 obj/
 *.lock.json
+AppPackages/
+BundleArtifacts/
+*.csproj.user
+*.pfx
