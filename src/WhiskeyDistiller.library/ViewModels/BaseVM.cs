@@ -20,6 +20,9 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand GoBackCommand => new Command(async () => { await _navigation.PopModalAsync(); });
 
+        public Command NavigateCommand<T>() where T : ContentPage => 
+            new Command(async () => { await NavigateToAsync<T>(); });
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
