@@ -19,6 +19,39 @@ namespace WhiskeyDistiller.library.ViewModels
             }
         }
 
+        public ICommand LoadGameCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await NavigateToAsync<LoadGamePage>();
+                });
+            }
+        }
+
+        public ICommand OptionsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await NavigateToAsync<OptionsPage>();
+                });
+            }
+        }
+
+        public ICommand AboutCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await NavigateToAsync<AboutPage>();
+                });
+            }
+        }
+
         public MainPageVM(INavigation navigation) : base(navigation)
         {         
         }
