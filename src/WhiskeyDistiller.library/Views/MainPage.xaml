@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WhiskeyDistiller.library.Views"
              xmlns:vm="using:WhiskeyDistiller.library.ViewModels;assembly=WhiskeyDistiller.library"
+             BackgroundImage="Assets/background.jpg"
              x:Class="WhiskeyDistiller.library.Views.MainPage">
     <Grid Style="{StaticResource Page}">
         <Grid.RowDefinitions>
@@ -10,7 +11,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" FontSize="50" Margin="0,40,0,40" TextColor="White" HorizontalOptions="Center" Text="Whiskey Distiller" />
+        <Image Source="Assets/headerlogo.png" HeightRequest="400" Margin="0,40,0,40" WidthRequest="414" Grid.Row="0" HorizontalOptions="Center" />
 
         <Grid Grid.Row="1" VerticalOptions="Start">
             <Grid.RowDefinitions>
