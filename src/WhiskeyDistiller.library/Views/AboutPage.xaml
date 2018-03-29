@@ -14,7 +14,7 @@
             <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="About" />
 
             <Grid Grid.Row="1">
-
+                <Label x:Name="lCredits" Text="Programming\nJarred Capellman\nDesign\nJarred Capellman" Margin="{Binding CreditsMargin}" />
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
