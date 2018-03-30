@@ -1,9 +1,53 @@
-﻿using Xamarin.Forms;
+﻿using System.Windows.Input;
+
+using WhiskeyDistiller.library.Views;
+
+using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
     public class NewGamePageVM : BaseVM
     {
-        public NewGamePageVM(INavigation navigation) : base(navigation) { }
+        private string _distillerName;
+
+        public string DistillerName
+        {
+            get { return _distillerName; }
+            set { _distillerName = value; OnPropertyChanged("DistillerName"); CheckForm(); }
+        }
+
+        private string _playerName;
+
+        public string PlayerName
+        {
+            get { return _playerName; }
+            set { _playerName = value; OnPropertyChanged("PlayerName"); CheckForm(); }
+        }
+
+        private void CheckForm()
+        {
+            EnableStartGameButton = !string.IsNullOrEmpty(PlayerName) && !string.IsNullOrEmpty(DistillerName);
+        }
+
+        private bool _enableStartGameButton;
+
+        public bool EnableStartGameButton
+        {
+            get { return _enableStartGameButton; }
+            set { _enableStartGameButton = value; OnPropertyChanged("EnableStartGameButton"); }
+        }
+
+        public ICommand StartGameCommand => NavigateCommand<MainGamePage>();
+
+        public NewGamePageVM(INavigation navigation) : base(navigation) {
+        }
+
+        public void InitForm()
+        {
+            PlayerName = string.Empty;
+            DistillerName = string.Empty;
+
+            CheckForm();
+        }
     }
 }
