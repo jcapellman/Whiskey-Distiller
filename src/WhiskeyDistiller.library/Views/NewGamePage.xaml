@@ -13,12 +13,26 @@
 
             <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="New Game" />
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Style="{StaticResource Content}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 
+                <Entry Grid.Row="0" Placeholder="your name" Text="{Binding PlayerName, Mode=TwoWay}" />
+
+                <Entry Grid.Row="1" Placeholder="distiller name" Text="{Binding DistillerName, Mode=TwoWay}" />
             </Grid>
             
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
-                <Button Text="Return to Main Menu" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" Text="Return to Main Menu" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+
+                <Button Grid.Column="1" Text="Start Game" IsEnabled="{Binding EnableStartGameButton}" Style="{StaticResource NextButton}" Command="{Binding StartGameCommand}" />
             </Grid>
         </Grid>
     </ContentPage.Content>
