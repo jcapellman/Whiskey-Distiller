@@ -16,8 +16,21 @@
                 <Setter Property="Margin" Value="20,20,20,20" />
             </Style>
 
+            <Styler x:Key="Content" TargetType="Grid">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Margin" Value="20,20,20,20" />
+                <Setter Property="WidthRequest" Value="300" />
+            </Styler>
+
             <Style x:Key="BackButton" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+
+            <Style x:Key="NextButton" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="WidthRequest" Value="200" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
