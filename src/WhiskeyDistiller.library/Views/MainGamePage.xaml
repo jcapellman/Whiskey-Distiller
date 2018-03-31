@@ -26,9 +26,19 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Text="Options" Style="{StaticResource BackButton}" Command="{Binding OptionsCommand}" />
+                <Button Grid.Column="0" Text="Options" Style="{StaticResource BackButton}" Command="{Binding ShowOptionsCommand}" />
 
                 <Button Grid.Column="1" Text="Next Turn" IsEnabled="{Binding EnableStartGameButton}" Style="{StaticResource NextButton}" Command="{Binding NextTurnCommand}" />
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.RowSpan="3" IsVisible="{Binding PopupOptionsVisible}">
+                <StackLayout Orientation="Vertical">
+                    <Label Style="{StaticResource PageHeader}" Text="Options" />
+
+                    <Button Text="Save Game" Command="{Binding ShowSaveMenuCommand}" />
+
+                    <Button Text="Return to Game" Command="{Binding ReturnToGameCommand}" />
+                </StackLayout>
             </Grid>
         </Grid>
     </ContentPage.Content>
