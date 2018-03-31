@@ -16,11 +16,11 @@
                 <Setter Property="Margin" Value="20,20,20,20" />
             </Style>
 
-            <Styler x:Key="Content" TargetType="Grid">
+            <Style x:Key="Content" TargetType="Grid">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="Margin" Value="20,20,20,20" />
                 <Setter Property="WidthRequest" Value="300" />
-            </Styler>
+            </Style>
 
             <Style x:Key="BackButton" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Start" />
