@@ -4,6 +4,32 @@
              BackgroundImage="Assets/background.jpg"
              x:Class="WhiskeyDistiller.library.Views.MainGamePage">
     <ContentPage.Content>
-        
+        <Grid Style="{StaticResource Page}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="Game" />
+
+            <Grid Grid.Row="1" Style="{StaticResource Content}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <Grid Grid.Row="2" Style="{StaticResource Footer}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Text="Options" Style="{StaticResource BackButton}" Command="{Binding OptionsCommand}" />
+
+                <Button Grid.Column="1" Text="Next Turn" IsEnabled="{Binding EnableStartGameButton}" Style="{StaticResource NextButton}" Command="{Binding NextTurnCommand}" />
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
