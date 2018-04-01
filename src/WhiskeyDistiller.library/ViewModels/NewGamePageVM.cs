@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 
+using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.Views;
 
 using Xamarin.Forms;
@@ -37,7 +38,19 @@ namespace WhiskeyDistiller.library.ViewModels
             set { _enableStartGameButton = value; OnPropertyChanged("EnableStartGameButton"); }
         }
 
-        public ICommand StartGameCommand => NavigateCommand<MainGamePage>();
+        public ICommand StartGameCommand {
+            get
+            {
+                var result = IoC.GameManager.CreateNewGame(DistillerName);
+
+                if (result)
+                {
+                    return NavigateCommand<MainGamePage>();
+                }
+
+                return NavigateCommand<ErrorPage>();
+            }
+        }
 
         public NewGamePageVM(INavigation navigation) : base(navigation) {
         }
