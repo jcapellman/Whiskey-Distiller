@@ -13,6 +13,12 @@ namespace WhiskeyDistiller.library.Managers
 
         private Game _currentGame;
 
+        public Game CurrentGame
+        {
+            get { return _currentGame; }
+            set { _currentGame = value; }
+        }
+
         public bool CreateNewGame(string distilleryName)
         {
             var game = new Game
@@ -25,7 +31,27 @@ namespace WhiskeyDistiller.library.Managers
 
             IoC.DatabaseManager.Add(game);
 
-            _currentGame = game;
+            CurrentGame = game;
+
+            return true;
+        }
+
+        private void IncrementTime()
+        {
+            if (CurrentGame.GameQuarter == 4)
+            {
+                CurrentGame.GameQuarter = 1;
+                CurrentGame.GameYear++;
+
+                return;
+            }
+
+            CurrentGame.GameQuarter++;
+        }
+
+        public bool ComputeTurn()
+        {
+            IncrementTime();
 
             return true;
         }
