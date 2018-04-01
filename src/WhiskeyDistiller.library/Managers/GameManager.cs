@@ -11,7 +11,9 @@ namespace WhiskeyDistiller.library.Managers
         private int NEWGAME_INITIAL_GAMEYEAR = DateTime.Now.Year;
         private const int NEWGAME_INITAL_GAMEQUARTER = 1;
 
-        public Game CreateNewGame(string distilleryName)
+        private Game _currentGame;
+
+        public bool CreateNewGame(string distilleryName)
         {
             var game = new Game
             {
@@ -23,7 +25,9 @@ namespace WhiskeyDistiller.library.Managers
 
             IoC.DatabaseManager.Add(game);
 
-            return game;
+            _currentGame = game;
+
+            return true;
         }
     }
 }
