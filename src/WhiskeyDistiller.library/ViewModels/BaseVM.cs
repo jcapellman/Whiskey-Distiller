@@ -16,12 +16,12 @@ namespace WhiskeyDistiller.library.ViewModels
             _navigation = navigation;
         }
 
-        public async Task NavigateToAsync<T>(object argument = null) where T : ContentPage => await _navigation.PushModalAsync((T)Activator.CreateInstance(typeof(T), argument));
+        public async Task NavigateToAsync<T>() where T : ContentPage => await _navigation.PushModalAsync((T)Activator.CreateInstance(typeof(T)));
 
         public ICommand GoBackCommand => new Command(async () => { await _navigation.PopModalAsync(); });
 
-        public Command NavigateCommand<T>(object argument = null) where T : ContentPage => 
-            new Command(async () => { await NavigateToAsync<T>(argument); });
+        public Command NavigateCommand<T>() where T : ContentPage => 
+            new Command(async () => { await NavigateToAsync<T>(); });
 
         public event PropertyChangedEventHandler PropertyChanged;
 
