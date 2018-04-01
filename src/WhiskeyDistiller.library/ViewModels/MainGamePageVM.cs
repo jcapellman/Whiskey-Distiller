@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 using WhiskeyDistiller.library.Views;
 
@@ -8,6 +9,12 @@ namespace WhiskeyDistiller.library.ViewModels
 {
     public class MainGamePageVM : BaseVM
     {
+        public Game CurrentGame
+        {
+            get { return IoC.GameManager.CurrentGame; }
+            set { OnPropertyChanged("CurrentGame"); }
+        }
+
         private bool _popupOptionsVisible;
 
         public bool PopupOptionsVisible
@@ -31,8 +38,13 @@ namespace WhiskeyDistiller.library.ViewModels
         }
 
         public ICommand ShowOptionsCommand => new Command(() => PopupOptionsVisible = true);
-        
-        public ICommand NextTurnCommand => NavigateCommand<MainPage>();
+
+        public ICommand NextTurnCommand => new Command(() =>
+        {
+            IoC.GameManager.ComputeTurn();
+
+            CurrentGame = IoC.GameManager.CurrentGame;
+        });
 
         public ICommand ReturnToGameCommand => new Command(() => PopupOptionsVisible = false);
 
