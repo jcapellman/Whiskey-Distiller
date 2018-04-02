@@ -19,14 +19,22 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" BackgroundColor="Black">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Style="{StaticResource CurrentGameHeader}" Text="{Binding CurrentGame.GameQuarter}" />
-                    <Label Grid.Column="1" Style="{StaticResource CurrentGameHeader}" Text="{Binding CurrentGame.GameYear}" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Game Quarter" />
+                    <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameQuarter}" />
+
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Game Year" />
+                    <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameYear}" />
                 </Grid>
             </Grid>
 

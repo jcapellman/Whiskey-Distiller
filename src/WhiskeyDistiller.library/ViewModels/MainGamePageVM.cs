@@ -13,7 +13,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public Game CurrentGame
         {
-            get { return IoC.GameManager.CurrentGame; }
+            get { return _currentGame; }
             set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
         }
 
@@ -38,7 +38,7 @@ namespace WhiskeyDistiller.library.ViewModels
             PopupOptionsVisible = false;
             PopupSaveMenuVisible = false;
 
-            CurrentGame = CurrentGame;
+            CurrentGame = IoC.GameManager.CurrentGame;
         }
 
         public ICommand ShowOptionsCommand => new Command(() => PopupOptionsVisible = true);
