@@ -25,8 +25,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Text="{Binding CurrentGame.GameQuarter}" />
-                    <Label Grid.Column="1" Text="{Binding CurrentGame.GameYear}" />
+                    <Label Grid.Column="0" Style="{StaticResource CurrentGameHeader}" Text="{Binding CurrentGame.GameQuarter}" />
+                    <Label Grid.Column="1" Style="{StaticResource CurrentGameHeader}" Text="{Binding CurrentGame.GameYear}" />
                 </Grid>
             </Grid>
 

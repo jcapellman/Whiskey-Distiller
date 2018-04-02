@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
+
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
-using WhiskeyDistiller.library.Views;
 
 using Xamarin.Forms;
 
@@ -9,10 +9,12 @@ namespace WhiskeyDistiller.library.ViewModels
 {
     public class MainGamePageVM : BaseVM
     {
+        private Game _currentGame;
+
         public Game CurrentGame
         {
             get { return IoC.GameManager.CurrentGame; }
-            set { OnPropertyChanged("CurrentGame"); }
+            set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
         }
 
         private bool _popupOptionsVisible;
@@ -35,6 +37,8 @@ namespace WhiskeyDistiller.library.ViewModels
         {
             PopupOptionsVisible = false;
             PopupSaveMenuVisible = false;
+
+            CurrentGame = CurrentGame;
         }
 
         public ICommand ShowOptionsCommand => new Command(() => PopupOptionsVisible = true);
