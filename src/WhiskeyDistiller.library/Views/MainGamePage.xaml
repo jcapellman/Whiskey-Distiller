@@ -19,8 +19,9 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" BackgroundColor="Black">
+                <Grid Grid.Row="0" Style="{StaticResource GameHeader}">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
@@ -35,6 +36,9 @@
 
                     <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Game Year" />
                     <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameYear}" />
+
+                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Cash" />
+                    <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.Cash}" />
                 </Grid>
             </Grid>
 
