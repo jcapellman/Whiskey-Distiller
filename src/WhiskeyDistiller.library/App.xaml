@@ -17,9 +17,8 @@
             </Style>
 
             <Style x:Key="Content" TargetType="Grid">
-                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="Margin" Value="20,20,20,20" />
-                <Setter Property="WidthRequest" Value="300" />
             </Style>
 
             <Style x:Key="BackButton" TargetType="Button">
@@ -50,6 +49,11 @@
                 <Setter Property="Margin" Value="20,20,0,20" />
             </Style>
 
+            <Style x:Key="GameHeader" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+            
             <Style x:Key="LabelHeader" TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="FontSize" Value="16" />
