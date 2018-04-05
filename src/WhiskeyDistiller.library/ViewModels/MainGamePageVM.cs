@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
@@ -32,7 +33,15 @@ namespace WhiskeyDistiller.library.ViewModels
             get { return _popupSaveMenuVisible; }
             set { _popupSaveMenuVisible = value; OnPropertyChanged("PopupOptionsVisible"); }
         }
-        
+
+        private List<string> _currentReleases;
+
+        public List<string> CurrentReleases
+        {
+            get { return _currentReleases; }
+            set { _currentReleases = value; OnPropertyChanged("CurrentReleases"); }
+        }
+
         public MainGamePageVM(INavigation navigation) : base(navigation)
         {
             PopupOptionsVisible = false;
