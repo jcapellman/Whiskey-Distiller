@@ -34,9 +34,9 @@ namespace WhiskeyDistiller.library.ViewModels
             set { _popupSaveMenuVisible = value; OnPropertyChanged("PopupOptionsVisible"); }
         }
 
-        private List<string> _currentReleases;
+        private List<Releases> _currentReleases;
 
-        public List<string> CurrentReleases
+        public List<Releases> CurrentReleases
         {
             get { return _currentReleases; }
             set { _currentReleases = value; OnPropertyChanged("CurrentReleases"); }
