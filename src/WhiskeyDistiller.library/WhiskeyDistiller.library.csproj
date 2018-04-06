@@ -11,6 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft SDKs\NuGetPackagesFallback\microsoft.netcore.universalwindowsplatform\6.0.8\ref\uap10.0.15138\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
