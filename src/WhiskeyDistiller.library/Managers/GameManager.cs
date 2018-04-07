@@ -1,7 +1,8 @@
 ﻿using System;
-
+using System.Linq;
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
+using WhiskeyDistiller.library.Enums;
 
 namespace WhiskeyDistiller.library.Managers
 {
@@ -36,6 +37,18 @@ namespace WhiskeyDistiller.library.Managers
             return true;
         }
 
+        public void AddNewWarehouse(string name, WarehouseTypes warehouseType)
+        {
+            var warehouse = new Warehouse
+            {
+                WarehouseType = warehouseType,
+                Name = name,
+                Game = CurrentGame
+            };
+
+            IoC.DatabaseManager.Add(warehouse);
+        }
+
         private void IncrementTime()
         {
             if (CurrentGame.GameQuarter == 4)
@@ -49,9 +62,22 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
+        private void ProcessCosts()
+        {
+            var batches = IoC.DatabaseManager.Select<Batch>(a => a.Warehouse.GameID == CurrentGame.ID).ToList();
+
+            var barrels = batches.Sum(a => a.NumberOfBarrels);
+
+            var totalCost = barrels * Constants.COST_PER_BARREL;
+
+            CurrentGame.Cash -= totalCost;
+        }
+
         public bool ComputeTurn()
         {
             IncrementTime();
+
+            ProcessCosts();
 
             return true;
         }
