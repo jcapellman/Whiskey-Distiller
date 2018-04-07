@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 using SQLite;
@@ -48,6 +50,14 @@ namespace WhiskeyDistiller.library.Implementations
             }
 
             return true;
+        }
+
+        public List<T> Select<T>(Expression<Func<T, bool>> expression)
+        {
+            using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
+            {
+                return sqlConnection.Get<List<T>>(expression);
+            }
         }
     }
 }
