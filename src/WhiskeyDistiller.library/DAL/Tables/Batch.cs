@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 using WhiskeyDistiller.library.Enums;
 
@@ -8,11 +7,9 @@ namespace WhiskeyDistiller.library.DAL.Tables
     public class Batch : BaseTable
     {
         [Required]
-        [ForeignKey("WarehouseID")]
-        public Warehouse Warehouse { get; set; }
-
         public int WarehouseID { get; set; }
 
+        [Required]
         public string Name { get; set; }
         
         [Required]
