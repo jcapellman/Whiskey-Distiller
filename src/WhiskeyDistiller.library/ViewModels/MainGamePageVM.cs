@@ -19,7 +19,7 @@ namespace WhiskeyDistiller.library.ViewModels
             set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
         }
 
-        public ICommand ShowOptionsCommand => NavigateCommand<OptionsPage>();
+        public ICommand ShowOptionsCommand => NavigateCommand<InGameMenuPage>();
 
         private List<Release> _currentReleases;
 
