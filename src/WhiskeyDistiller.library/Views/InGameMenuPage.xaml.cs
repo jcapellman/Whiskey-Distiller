@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WhiskeyDistiller.library.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +11,8 @@ namespace WhiskeyDistiller.library.Views
 		public InGameMenuPage ()
 		{
 			InitializeComponent ();
+
+            BindingContext = new InGameMenuPageVM(Navigation);
 		}
 	}
 }
