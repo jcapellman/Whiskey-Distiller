@@ -43,7 +43,7 @@ namespace WhiskeyDistiller.library.Managers
             {
                 WarehouseType = warehouseType,
                 Name = name,
-                Game = CurrentGame
+                GameID = CurrentGame.ID
             };
 
             IoC.DatabaseManager.Add(warehouse);
@@ -64,11 +64,11 @@ namespace WhiskeyDistiller.library.Managers
 
         private void ProcessCosts()
         {
-            var batches = IoC.DatabaseManager.Select<Batch>(a => a.Warehouse.GameID == CurrentGame.ID).ToList();
+            var warehouses = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID).Select(a => a.ID).ToList();
 
-            var barrels = batches.Sum(a => a.NumberOfBarrels);
+            var numberBarrels = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseID)).Sum(a => a.NumberOfBarrels);
 
-            var totalCost = barrels * Constants.COST_PER_BARREL;
+            var totalCost = numberBarrels * Constants.COST_PER_BARREL;
 
             CurrentGame.Cash -= totalCost;
         }
