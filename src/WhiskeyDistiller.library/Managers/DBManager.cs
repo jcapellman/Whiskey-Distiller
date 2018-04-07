@@ -1,4 +1,7 @@
-﻿using WhiskeyDistiller.library.DAL.Tables;
+﻿using System;
+using System.Collections.Generic;
+
+using WhiskeyDistiller.library.DAL.Tables;
 using WhiskeyDistiller.library.Interfaces;
 
 namespace WhiskeyDistiller.library.Managers
@@ -12,6 +15,11 @@ namespace WhiskeyDistiller.library.Managers
         public void Add<T>(T obj) where T : BaseTable
         {
             _database.Add(obj);
+        }
+
+        public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : BaseTable
+        {
+            return _database.Select(expression);
         }
     }
 }
