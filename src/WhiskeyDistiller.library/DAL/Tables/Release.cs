@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WhiskeyDistiller.library.Enums;
 
 namespace WhiskeyDistiller.library.DAL.Tables
 {
-    public class Releases : BaseTable
+    public class Release : BaseTable
     {
         [Required]
         [ForeignKey("GameID")]
@@ -22,12 +21,9 @@ namespace WhiskeyDistiller.library.DAL.Tables
         public int Revenue { get; set; }
 
         [Required]
-        public int YearsAged { get; set; }
+        [ForeignKey("BatchID")]
+        public Batch Batch { get; set; }
 
-        [Required]
-        public double Proof { get; set; }
-
-        [Required]
-        public WhiskeyTypes Type { get; set; }
+        public int BatchID { get; set; }
     }
 }
