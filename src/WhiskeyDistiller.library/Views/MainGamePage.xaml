@@ -41,37 +41,12 @@
                     <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.Cash}" />
                 </Grid>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0" Text="current releases" Style="{StaticResource LabelHeader}" />
-                    
-                    <ListView Grid.Column="0" BackgroundColor="Black" ItemsSource="{Binding Releases, Mode=TwoWay}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Label Grid.Row="0" TextColor="White" FontSize="Medium" Text="{Binding Name}" />
-                                    <Label Grid.Row="1" TextColor="White" FontSize="Small" Text="{Binding Inventory}" />
-                                    <Label Grid.Row="2" TextColor="White" FontSize="Small" Text="{Binding Revenue}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <StackLayout Orientation="Vertical" Grid.Row="1">
+                    <Button Style="{StaticResource MenuButton}" Text="Events" />
+                    <Button Style="{StaticResource MenuButton}" Text="Warehouse Management" Command="{Binding GotoWarehouseCommand}" />
+                    <Button Style="{StaticResource MenuButton}" Text="Batch Management" Command="{Binding GotoBatchCommand}" />
+                    <Button Style="{StaticResource MenuButton}" Text="Financials" />
+                </StackLayout>
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
