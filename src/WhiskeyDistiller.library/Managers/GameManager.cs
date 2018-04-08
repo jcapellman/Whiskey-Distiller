@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 using WhiskeyDistiller.library.Enums;
@@ -36,19 +37,7 @@ namespace WhiskeyDistiller.library.Managers
 
             return true;
         }
-
-        public void AddNewWarehouse(string name, WarehouseTypes warehouseType)
-        {
-            var warehouse = new Warehouse
-            {
-                WarehouseType = warehouseType,
-                Name = name,
-                GameID = CurrentGame.ID
-            };
-
-            IoC.DatabaseManager.Add(warehouse);
-        }
-
+        
         private void IncrementTime()
         {
             if (CurrentGame.GameQuarter == 4)
