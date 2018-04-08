@@ -21,13 +21,9 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand ShowOptionsCommand => NavigateCommand<InGameMenuPage>();
 
-        private List<Release> _currentReleases;
+        public ICommand GotoWarehouseCommand => NavigateCommand<WarehousePage>();
 
-        public List<Release> CurrentReleases
-        {
-            get { return _currentReleases; }
-            set { _currentReleases = value; OnPropertyChanged("CurrentReleases"); }
-        }
+        public ICommand GotoBatchCommand => NavigateCommand<BatchPage>();
 
         public MainGamePageVM(INavigation navigation) : base(navigation)
         {
