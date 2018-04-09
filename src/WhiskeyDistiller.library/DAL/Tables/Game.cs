@@ -8,6 +8,9 @@ namespace WhiskeyDistiller.library.DAL.Tables
         public string DistilleryName { get; set; }
 
         [Required]
+        public string PlayerName { get; set; }
+
+        [Required]
         public int GameYear { get; set; }
 
         [Required]
