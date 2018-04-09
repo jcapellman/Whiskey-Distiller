@@ -41,7 +41,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public ICommand StartGameCommand {
             get
             {
-                var result = IoC.GameManager.CreateNewGame(DistillerName);
+                var result = IoC.GameManager.CreateNewGame(DistillerName, PlayerName);
 
                 if (result)
                 {

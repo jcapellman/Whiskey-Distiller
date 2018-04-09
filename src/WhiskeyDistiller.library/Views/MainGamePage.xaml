@@ -7,13 +7,16 @@
         <Grid Style="{StaticResource Page}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="{Binding CurretGame.DistilleryName}" />
+            <Image Grid.Row="0" Source="Assets/headerlogo.png" HeightRequest="200" Margin="0,40,0,40" WidthRequest="214" HorizontalOptions="Center" />
 
-            <Grid Grid.Row="1" Style="{StaticResource Content}">
+            <Label Grid.Row="1" Text="{Binding CurrentGame.DistilleryName}" />
+
+            <Grid Grid.Row="2" Style="{StaticResource Content}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -31,11 +34,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Game Quarter" />
-                    <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameQuarter}" />
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Date" />
+                    
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Game Year" />
-                    <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameYear}" />
+                        <Label Grid.Column="0" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameQuarter}" />
+                        <Label Grid.Column="1" Style="{StaticResource LabelValue}" Text="-" />
+                        <Label Grid.Column="2" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.GameYear}" />
+                    </Grid>
 
                     <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelHeader}" Text="Cash" />
                     <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource LabelValue}" Text="{Binding CurrentGame.Cash}" />
@@ -45,11 +56,11 @@
                     <Button Style="{StaticResource MenuButton}" Text="Events" />
                     <Button Style="{StaticResource MenuButton}" Text="Warehouse Management" Command="{Binding GotoWarehouseCommand}" />
                     <Button Style="{StaticResource MenuButton}" Text="Batch Management" Command="{Binding GotoBatchCommand}" />
-                    <Button Style="{StaticResource MenuButton}" Text="Financials" />
+                    <Button Style="{StaticResource MenuButton}" Text="Financials" Command="{Binding GotoFinancialsCommand}" />
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="2" Style="{StaticResource Footer}">
+            <Grid Grid.Row="3" Style="{StaticResource Footer}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
