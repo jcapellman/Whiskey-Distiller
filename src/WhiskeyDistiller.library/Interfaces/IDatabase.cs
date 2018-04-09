@@ -13,6 +13,6 @@ namespace WhiskeyDistiller.library.Interfaces
 
         bool CreateTable(Type tableType);
 
-        List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression);
+        List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new();
     }
 }

@@ -17,7 +17,7 @@ namespace WhiskeyDistiller.library.Managers
             _database.Add(obj);
         }
 
-        public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : BaseTable
+        public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new()
         {
             return _database.Select(expression);
         }

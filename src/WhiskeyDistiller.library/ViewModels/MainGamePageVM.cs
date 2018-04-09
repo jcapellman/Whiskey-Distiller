@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
@@ -24,6 +23,8 @@ namespace WhiskeyDistiller.library.ViewModels
         public ICommand GotoWarehouseCommand => NavigateCommand<WarehousePage>();
 
         public ICommand GotoBatchCommand => NavigateCommand<BatchPage>();
+
+        public ICommand GotoFinancialsCommand => NavigateCommand<FinancialsPage>();
 
         public MainGamePageVM(INavigation navigation) : base(navigation)
         {

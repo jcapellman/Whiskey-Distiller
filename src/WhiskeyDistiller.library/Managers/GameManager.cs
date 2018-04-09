@@ -3,7 +3,6 @@ using System.Linq;
 
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
-using WhiskeyDistiller.library.Enums;
 
 namespace WhiskeyDistiller.library.Managers
 {
@@ -20,12 +19,13 @@ namespace WhiskeyDistiller.library.Managers
             get { return _currentGame; }
             set { _currentGame = value; }
         }
-
-        public bool CreateNewGame(string distilleryName)
+        
+        public bool CreateNewGame(string distilleryName, string playerName)
         {
             var game = new Game
             {
                 DistilleryName = distilleryName,
+                PlayerName = playerName,
                 Cash = NEWGAME_INITIAL_CASH,
                 GameYear = NEWGAME_INITIAL_GAMEYEAR,
                 GameQuarter = NEWGAME_INITAL_GAMEQUARTER
@@ -67,7 +67,7 @@ namespace WhiskeyDistiller.library.Managers
             IncrementTime();
 
             ProcessCosts();
-
+            
             return true;
         }
     }
