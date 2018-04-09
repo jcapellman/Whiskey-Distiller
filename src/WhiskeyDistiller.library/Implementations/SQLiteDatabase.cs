@@ -52,11 +52,11 @@ namespace WhiskeyDistiller.library.Implementations
             return true;
         }
 
-        public List<T> Select<T>(Expression<Func<T, bool>> expression)
+        public List<T> Select<T>(Expression<Func<T, bool>> expression) where T : new()
         {
             using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
             {
-                return sqlConnection.Get<List<T>>(expression);
+                return sqlConnection.Table<T>().Where(expression).ToList();
             }
         }
     }
