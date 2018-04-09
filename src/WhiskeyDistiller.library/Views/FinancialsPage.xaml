@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="Assets/background.jpg"
+             x:Class="WhiskeyDistiller.library.Views.FinancialsPage">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource Page}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="Financials" />
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <Grid Grid.Row="2" Style="{StaticResource Footer}">
+                <Button Text="Return to Game" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
