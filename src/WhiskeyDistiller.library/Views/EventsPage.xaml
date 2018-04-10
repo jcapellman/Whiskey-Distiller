@@ -22,6 +22,13 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="{Binding Date}" />
+                                <Label Grid.Row="1" Text="{Binding Description}" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
