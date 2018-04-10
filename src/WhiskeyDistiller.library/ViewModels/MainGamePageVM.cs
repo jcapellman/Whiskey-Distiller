@@ -22,6 +22,8 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand GotoWarehouseCommand => NavigateCommand<WarehousePage>();
 
+        public ICommand GotoEventsCommand => NavigateCommand<EventsPage>();
+
         public ICommand GotoBatchCommand => NavigateCommand<BatchPage>();
 
         public ICommand GotoFinancialsCommand => NavigateCommand<FinancialsPage>();
