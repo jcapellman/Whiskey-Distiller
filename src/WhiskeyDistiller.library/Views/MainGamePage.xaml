@@ -53,7 +53,7 @@
                 </Grid>
 
                 <StackLayout Orientation="Vertical" Grid.Row="1">
-                    <Button Style="{StaticResource MenuButton}" Text="Events" />
+                    <Button Style="{StaticResource MenuButton}" Text="Events" Command="{Binding GotoEventsCommand}" />
                     <Button Style="{StaticResource MenuButton}" Text="Warehouse Management" Command="{Binding GotoWarehouseCommand}" />
                     <Button Style="{StaticResource MenuButton}" Text="Batch Management" Command="{Binding GotoBatchCommand}" />
                     <Button Style="{StaticResource MenuButton}" Text="Financials" Command="{Binding GotoFinancialsCommand}" />
