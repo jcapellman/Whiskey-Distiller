@@ -18,7 +18,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Text="Save Game" Style="{StaticResource MenuButton}" />
+                <Button Grid.Row="0" Text="Save Game" Style="{StaticResource MenuButton}" Command="{Binding GotoSaveGameCommand}" />
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
