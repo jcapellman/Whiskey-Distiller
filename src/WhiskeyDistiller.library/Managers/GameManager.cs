@@ -51,6 +51,8 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
+        public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a.Active).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        
         private void ProcessCosts()
         {
             var warehouses = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID).Select(a => a.ID).ToList();
