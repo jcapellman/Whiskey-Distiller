@@ -43,6 +43,14 @@
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
             </Style>
 
+            <Style x:Key="LoadGameButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="BackgroundColor" Value="#2e2e2e" />
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+
             <Style x:Key="PageHeader" TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="FontSize" Value="20" />
