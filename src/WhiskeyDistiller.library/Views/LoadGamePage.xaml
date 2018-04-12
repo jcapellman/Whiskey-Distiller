@@ -14,7 +14,25 @@
             <Label Grid.Row="0" Style="{StaticResource PageHeader}" Text="Load Game" />
 
             <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
+                <ListView ItemsSource="{Binding Games}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="{Binding DistilleryName}" />
+                                <Button Grid.Column="1" Text="Load" Style="{StaticResource LoadGameButton}" Command="{Binding LoadGameCommand}" CommandParameter="{Binding ID}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
