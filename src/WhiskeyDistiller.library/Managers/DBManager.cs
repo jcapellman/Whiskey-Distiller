@@ -21,5 +21,10 @@ namespace WhiskeyDistiller.library.Managers
         {
             return _database.Select(expression);
         }
+
+        public void Remove<T>(T obj) where T: BaseTable
+        {
+            _database.Remove(obj);
+        }
     }
 }
