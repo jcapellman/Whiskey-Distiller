@@ -14,5 +14,7 @@ namespace WhiskeyDistiller.library.Interfaces
         bool CreateTable(Type tableType);
 
         List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new();
+
+        void Remove<T>(T obj) where T : BaseTable;
     }
 }
