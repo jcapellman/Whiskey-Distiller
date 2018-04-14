@@ -18,7 +18,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <ListView ItemsSource="{Binding Games}">
+                <ListView Grid.Row="0" IsVisible="{Binding GamesListVisible}" ItemsSource="{Binding Games}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -28,11 +28,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Column="0" Text="{Binding DistilleryName}" />
-                                <Button Grid.Column="1" Text="Load" Style="{StaticResource LoadGameButton}" Command="{Binding LoadGameCommand}" CommandParameter="{Binding ID}" />
+                                <Button Grid.Column="1" Text="Load" Style="{StaticResource LoadGameButton}" Command="{Binding LoadGameCommand}" CommandParameter="{Binding .}" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <Label Grid.Row="0" IsVisible="{Binding NoGamesFound}" Text="No Saved Games found" Style="{StaticResource NoGamesAvailable}" />
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
