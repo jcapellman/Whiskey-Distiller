@@ -52,6 +52,17 @@ namespace WhiskeyDistiller.library.Implementations
             return true;
         }
 
+        public void Remove<T>(T objectToDelete) where T : BaseTable
+        {
+            using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
+            {
+                objectToDelete.Active = false;
+                objectToDelete.Modified = DateTime.Now;
+
+                sqlConnection.Update(objectToDelete);
+            }
+        }
+
         public List<T> Select<T>(Expression<Func<T, bool>> expression) where T : new()
         {
             using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
