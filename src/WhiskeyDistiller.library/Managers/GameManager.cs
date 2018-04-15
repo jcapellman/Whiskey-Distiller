@@ -53,7 +53,17 @@ namespace WhiskeyDistiller.library.Managers
         }
 
         public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a.Active).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
-        
+
+        internal void SaveNewGame(string newSaveGameName)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void OverwriteSameGame(Game selectedGame)
+        {
+            throw new NotImplementedException();
+        }
+
         private void ProcessCosts()
         {
             var warehouses = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID).Select(a => a.ID).ToList();
