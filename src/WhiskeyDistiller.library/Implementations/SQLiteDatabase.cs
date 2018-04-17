@@ -24,6 +24,14 @@ namespace WhiskeyDistiller.library.Implementations
             }
         }
 
+        public void Update<T>(T obj) where T : BaseTable
+        {
+            using(var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
+            {
+                sqlConnection.Update(obj);
+            }
+        }
+
         public bool CreateTable(Type tableType)
         {
             using (var sqlConnection = new SQLiteConnection(Constants.DB_FILENAME))
