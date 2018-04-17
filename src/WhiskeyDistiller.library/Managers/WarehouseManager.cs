@@ -20,6 +20,12 @@ namespace WhiskeyDistiller.library.Managers
             IoC.DatabaseManager.Add(warehouse);
         }
         
+        public void RenameWarehouse(string newName, Warehouse warehouse)
+        {
+            warehouse.Name = newName;
+            IoC.DatabaseManager.Update(warehouse);
+        }
+
         public List<Warehouse> GetWarehouses(int GameID)
         {
             return IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == GameID && a.Active);
