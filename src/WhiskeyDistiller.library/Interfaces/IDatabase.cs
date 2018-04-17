@@ -16,5 +16,7 @@ namespace WhiskeyDistiller.library.Interfaces
         List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new();
 
         void Remove<T>(T obj) where T : BaseTable;
+
+        void Update<T>(T obj) where T : BaseTable;
     }
 }
