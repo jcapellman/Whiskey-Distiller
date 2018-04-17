@@ -26,5 +26,10 @@ namespace WhiskeyDistiller.library.Managers
         {
             _database.Remove(obj);
         }
+
+        public void Update(Warehouse warehouse)
+        {
+            _database.Update(warehouse);
+        }
     }
 }
