@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WhiskeyDistiller.library.Views"
-             xmlns:vm="using:WhiskeyDistiller.library.ViewModels;assembly=WhiskeyDistiller.library"
              BackgroundImage="Assets/background.jpg"
              x:Class="WhiskeyDistiller.library.Views.MainPage">
     <Grid Style="{StaticResource Page}">

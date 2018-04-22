@@ -13,7 +13,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public string DistillerName
         {
-            get { return _distillerName; }
+            get => _distillerName;
             set { _distillerName = value; OnPropertyChanged("DistillerName"); CheckForm(); }
         }
 
@@ -21,7 +21,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public string PlayerName
         {
-            get { return _playerName; }
+            get => _playerName;
             set { _playerName = value; OnPropertyChanged("PlayerName"); CheckForm(); }
         }
 
@@ -34,7 +34,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public bool EnableStartGameButton
         {
-            get { return _enableStartGameButton; }
+            get => _enableStartGameButton;
             set { _enableStartGameButton = value; OnPropertyChanged("EnableStartGameButton"); }
         }
 
@@ -43,12 +43,7 @@ namespace WhiskeyDistiller.library.ViewModels
             {
                 var result = IoC.GameManager.CreateNewGame(DistillerName, PlayerName);
 
-                if (result)
-                {
-                    return NavigateCommand<MainGamePage>();
-                }
-
-                return NavigateCommand<ErrorPage>();
+                return result ? NavigateCommand<MainGamePage>() : NavigateCommand<ErrorPage>();
             }
         }
 

@@ -14,7 +14,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public Game CurrentGame
         {
-            get { return _currentGame; }
+            get => _currentGame;
             set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
         }
 

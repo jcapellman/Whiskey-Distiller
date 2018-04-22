@@ -6,7 +6,7 @@ namespace WhiskeyDistiller.library.Views
 {
 	public partial class MainGamePage : ContentPage
 	{
-        private MainGamePageVM viewModel => (MainGamePageVM)BindingContext;
+        private MainGamePageVM ViewModel => (MainGamePageVM)BindingContext;
 
 		public MainGamePage ()
 		{
