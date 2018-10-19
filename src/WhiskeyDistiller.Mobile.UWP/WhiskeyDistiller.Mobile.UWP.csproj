@@ -173,9 +173,6 @@
     <PackageReference Include="Ninject">
       <Version>3.3.4</Version>
     </PackageReference>
-    <PackageReference Include="sqlite-net-pcl">
-      <Version>1.5.231</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
   </ItemGroup>
@@ -184,9 +181,6 @@
       <Project>{55ddff6a-1956-41db-9a5d-0ca2fbec60d6}</Project>
       <Name>WhiskeyDistiller.library</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="WhiskeyDistiller.Mobile.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="..\WhiskeyDistiller.Mobile\WhiskeyDistiller.Mobile.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
