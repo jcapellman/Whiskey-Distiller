@@ -1,11 +1,8 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+
+using WhiskeyDistiller.library;
 
 namespace WhiskeyDistiller.Mobile.Droid
 {
@@ -24,4 +21,3 @@ namespace WhiskeyDistiller.Mobile.Droid
         }
     }
 }
-
