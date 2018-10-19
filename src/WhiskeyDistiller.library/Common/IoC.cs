@@ -19,11 +19,11 @@ namespace WhiskeyDistiller.library.Common
 
         public static void Setup()
         {
-            var sqliteDatabase = new SQLiteDatabase();
+            var liteDbDatabase = new LiteDBDatabase();
 
-            sqliteDatabase.InitializeDB();
+            liteDbDatabase.InitializeDB();
 
-            Kernel.Bind<DBManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", sqliteDatabase);
+            Kernel.Bind<DBManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", liteDbDatabase);
             Kernel.Bind<GameManager>().ToSelf().InSingletonScope();
             Kernel.Bind<WarehouseManager>().ToSelf().InSingletonScope();
             Kernel.Bind<EventManager>().ToSelf().InSingletonScope();
