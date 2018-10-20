@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using WhiskeyDistiller.library.Common;
+using WhiskeyDistiller.Mobile.UWP.InterfaceImplementations;
 
 namespace WhiskeyDistiller.Mobile.UWP
 {
@@ -22,8 +23,6 @@ namespace WhiskeyDistiller.Mobile.UWP
         public App()
         {
             this.InitializeComponent();
-
-            IoC.Setup();
 
             this.Suspending += OnSuspending;
         }
@@ -49,6 +48,9 @@ namespace WhiskeyDistiller.Mobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.Forms.DependencyService.Register<FileIO>();
+
+                IoC.Setup();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
