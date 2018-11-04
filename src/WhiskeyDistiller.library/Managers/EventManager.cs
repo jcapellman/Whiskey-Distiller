@@ -23,7 +23,7 @@ namespace WhiskeyDistiller.library.Managers
 
         public List<Event> GetEvents(int gameID)
         {
-            var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameID && a.Active && !a.Read).OrderByDescending(a => a.Date).ToList();
+            var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameID && !a.Read).OrderByDescending(a => a.Date).ToList();
 
             return events;
         }
