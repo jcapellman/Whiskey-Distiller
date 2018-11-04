@@ -29,7 +29,9 @@ namespace WhiskeyDistiller.library.Managers
                 PlayerName = playerName,
                 Cash = NEWGAME_INITIAL_CASH,
                 GameYear = NEWGAME_INITIAL_GAMEYEAR,
-                GameQuarter = NEWGAME_INITAL_GAMEQUARTER
+                GameQuarter = NEWGAME_INITAL_GAMEQUARTER,
+                Created = DateTime.Now,
+                Modified = DateTime.Now
             };
 
             IoC.DatabaseManager.Add(game);
@@ -52,7 +54,7 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
-        public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a.Active).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a != null).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
 
         internal void SaveNewGame(string newSaveGameName)
         {
