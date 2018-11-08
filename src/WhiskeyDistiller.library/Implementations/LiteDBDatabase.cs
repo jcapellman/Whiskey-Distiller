@@ -13,7 +13,9 @@ namespace WhiskeyDistiller.library.Implementations
 {
     public class LiteDBDatabase : IDatabase
     {
-        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, "game.db");
+        private const string FILE_NAME = "game.db";
+
+        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, FILE_NAME);
 
         public bool InitializeDB()
         {
