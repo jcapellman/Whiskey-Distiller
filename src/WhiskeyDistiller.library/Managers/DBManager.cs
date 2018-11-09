@@ -8,7 +8,7 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class DBManager : BaseManager
     {
-        private IDatabase _database;
+        private readonly IDatabase _database;
 
         public DBManager(IDatabase database) { _database = database; }
 
@@ -17,10 +17,7 @@ namespace WhiskeyDistiller.library.Managers
             _database.Add(obj);
         }
 
-        public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new()
-        {
-            return _database.Select(expression);
-        }
+        public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new() => _database.Select(expression);
 
         public void Remove<T>(T obj) where T: BaseTable
         {
