@@ -9,27 +9,21 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class GameManager : BaseManager
     {
-        private const double NEWGAME_INITIAL_CASH = 100;
-        private int NEWGAME_INITIAL_GAMEYEAR = DateTime.Now.Year;
-        private const int NEWGAME_INITAL_GAMEQUARTER = 1;
+        private const double NewgameInitialCash = 100;
+        private readonly int _newgameInitialGameyear = DateTime.Now.Year;
+        private const int NewgameInitalGamequarter = 1;
 
-        private Game _currentGame;
+        public Game CurrentGame { get; set; }
 
-        public Game CurrentGame
-        {
-            get { return _currentGame; }
-            set { _currentGame = value; }
-        }
-        
         public bool CreateNewGame(string distilleryName, string playerName)
         {
             var game = new Game
             {
                 DistilleryName = distilleryName,
                 PlayerName = playerName,
-                Cash = NEWGAME_INITIAL_CASH,
-                GameYear = NEWGAME_INITIAL_GAMEYEAR,
-                GameQuarter = NEWGAME_INITAL_GAMEQUARTER,
+                Cash = NewgameInitialCash,
+                GameYear = _newgameInitialGameyear,
+                GameQuarter = NewgameInitalGamequarter,
                 Created = DateTime.Now,
                 Modified = DateTime.Now
             };
@@ -54,7 +48,8 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
-        public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a != null).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        public List<Game> GetSavedGames() => 
+            IoC.DatabaseManager.Select<Game>(a => a != null).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
 
         internal void SaveNewGame(string newSaveGameName)
         {
