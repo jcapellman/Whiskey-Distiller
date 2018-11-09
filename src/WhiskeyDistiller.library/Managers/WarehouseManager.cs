@@ -8,11 +8,11 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class WarehouseManager : BaseManager
     { 
-        public void AddWarehouse(int GameID, string name, WarehouseTypes warehouseType)
+        public void AddWarehouse(int gameId, string name, WarehouseTypes warehouseType)
         {
             var warehouse = new Warehouse
             {
-                GameID = GameID,
+                GameID = gameId,
                 Name = name,
                 WarehouseType = warehouseType
             };
