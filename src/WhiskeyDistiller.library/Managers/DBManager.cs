@@ -14,6 +14,9 @@ namespace WhiskeyDistiller.library.Managers
 
         public void Add<T>(T obj) where T : BaseTable
         {
+            obj.Modified = DateTime.Now;
+            obj.Created = DateTime.Now;
+            
             _database.Add(obj);
         }
 
@@ -26,6 +29,8 @@ namespace WhiskeyDistiller.library.Managers
 
         public void Update(Warehouse warehouse)
         {
+            warehouse.Modified = DateTime.Now;
+            
             _database.Update(warehouse);
         }
     }
