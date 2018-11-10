@@ -23,9 +23,7 @@ namespace WhiskeyDistiller.library.Managers
                 PlayerName = playerName,
                 Cash = NewgameInitialCash,
                 GameYear = _newgameInitialGameyear,
-                GameQuarter = NewgameInitalGamequarter,
-                Created = DateTime.Now,
-                Modified = DateTime.Now
+                GameQuarter = NewgameInitalGamequarter
             };
 
             IoC.DatabaseManager.Add(game);
