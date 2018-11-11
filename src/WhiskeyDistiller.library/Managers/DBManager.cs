@@ -6,11 +6,11 @@ using WhiskeyDistiller.library.Interfaces;
 
 namespace WhiskeyDistiller.library.Managers
 {
-    public class DBManager : BaseManager
+    public class DbManager : BaseManager
     {
         private readonly IDatabase _database;
 
-        public DBManager(IDatabase database) { _database = database; }
+        public DbManager(IDatabase database) { _database = database; }
 
         public void Add<T>(T obj) where T : BaseTable
         {

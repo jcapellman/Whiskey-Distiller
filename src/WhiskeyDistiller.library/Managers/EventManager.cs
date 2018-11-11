@@ -8,22 +8,22 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class EventManager : BaseManager
     {
-        public void AddEvent(string description, int gameID, string date)
+        public void AddEvent(string description, int gameId, string date)
         {
             var eventRow = new Event
             {
                 Date = date,
                 Description = description,
-                GameID = gameID,
+                GameID = gameId,
                 Read = false
             };
 
             IoC.DatabaseManager.Add(eventRow);
         }
 
-        public List<Event> GetEvents(int gameID)
+        public List<Event> GetEvents(int gameId)
         {
-            var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameID && !a.Read).OrderByDescending(a => a.Date).ToList();
+            var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameId && !a.Read).OrderByDescending(a => a.Date).ToList();
 
             return events;
         }

@@ -9,7 +9,7 @@ namespace WhiskeyDistiller.library.Common
     {
         private static IKernel Kernel { get; set; } = new StandardKernel();
 
-        public static DBManager DatabaseManager => Kernel.Get<DBManager>();
+        public static DbManager DatabaseManager => Kernel.Get<DbManager>();
 
         public static GameManager GameManager => Kernel.Get<GameManager>();
 
@@ -19,11 +19,11 @@ namespace WhiskeyDistiller.library.Common
 
         public static void Setup()
         {
-            var liteDbDatabase = new LiteDBDatabase();
+            var liteDbDatabase = new LiteDbDatabase();
 
             liteDbDatabase.InitializeDB();
 
-            Kernel.Bind<DBManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", liteDbDatabase);
+            Kernel.Bind<DbManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", liteDbDatabase);
             Kernel.Bind<GameManager>().ToSelf().InSingletonScope();
             Kernel.Bind<WarehouseManager>().ToSelf().InSingletonScope();
             Kernel.Bind<EventManager>().ToSelf().InSingletonScope();

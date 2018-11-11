@@ -11,11 +11,11 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.Implementations
 {
-    public class LiteDBDatabase : IDatabase
+    public class LiteDbDatabase : IDatabase
     {
-        private const string FILE_NAME = "game.db";
+        private const string DbFileName = "game.db";
 
-        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, FILE_NAME);
+        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, DbFileName);
 
         public bool InitializeDB()
         {
@@ -32,10 +32,12 @@ namespace WhiskeyDistiller.library.Implementations
             }
         }
 
-        public bool CreateTable(Type tableType)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// For LiteDB this method is not needed to be called
+        /// </summary>
+        /// <param name="tableType"></param>
+        /// <returns></returns>
+        public bool CreateTable(Type tableType) => true;
 
         public List<T> Select<T>(Expression<Func<T, bool>> expression) where T : new()
         {
