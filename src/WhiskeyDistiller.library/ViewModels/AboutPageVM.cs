@@ -2,9 +2,9 @@
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class AboutPageVM : BaseVM
+    public class AboutPageVm : BaseVm
     {
-        public AboutPageVM(INavigation navigation) : base(navigation)
+        public AboutPageVm(INavigation navigation) : base(navigation)
         {
         }
     }

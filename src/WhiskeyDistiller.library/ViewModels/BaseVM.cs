@@ -7,18 +7,18 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class BaseVM : INotifyPropertyChanged
+    public class BaseVm : INotifyPropertyChanged
     {
-        protected INavigation _navigation;
+        protected INavigation Navigation;
 
-        public BaseVM(INavigation navigation)
+        public BaseVm(INavigation navigation)
         {
-            _navigation = navigation;
+            Navigation = navigation;
         }
 
-        public async Task NavigateToAsync<T>() where T : ContentPage => await _navigation.PushModalAsync((T)Activator.CreateInstance(typeof(T)));
+        public async Task NavigateToAsync<T>() where T : ContentPage => await Navigation.PushModalAsync((T)Activator.CreateInstance(typeof(T)));
 
-        public ICommand GoBackCommand => new Command(async () => { await _navigation.PopModalAsync(); });
+        public ICommand GoBackCommand => new Command(async () => { await Navigation.PopModalAsync(); });
 
         public Command NavigateCommand<T>() where T : ContentPage => 
             new Command(async () => { await NavigateToAsync<T>(); });

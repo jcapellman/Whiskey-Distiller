@@ -8,13 +8,13 @@ namespace WhiskeyDistiller.library.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewGamePage : ContentPage
 	{
-        private NewGamePageVM viewModel => (NewGamePageVM)BindingContext;
+        private NewGamePageVm viewModel => (NewGamePageVm)BindingContext;
 
 		public NewGamePage ()
 		{
 			InitializeComponent ();
 
-            BindingContext = new NewGamePageVM(Navigation);
+            BindingContext = new NewGamePageVm(Navigation);
 		}
 
         protected override void OnAppearing()

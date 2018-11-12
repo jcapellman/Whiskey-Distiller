@@ -11,7 +11,7 @@ namespace WhiskeyDistiller.library.Views
 		{
 			InitializeComponent();
 
-            BindingContext = new MainPageVM(this.Navigation);
+            BindingContext = new MainPageVm(this.Navigation);
 		}
 	}
 }

@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class LoadGamePageVM : BaseVM
+    public class LoadGamePageVm : BaseVm
     {
         private bool _gamesListVisible;
 
@@ -43,16 +43,16 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public List<Game> Games
         {
-            get { return _games; }
+            get => _games;
             set { _games = value; OnPropertyChanged("Games"); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
         }
 
         public ICommand LoadGameCommand => new Command<Game>(async (game) =>
         {
-            await _navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.ID));
+            await Navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.ID));
         });
 
-        public LoadGamePageVM(INavigation navigation) : base(navigation)
+        public LoadGamePageVm(INavigation navigation) : base(navigation)
         {
             GamesListVisible = false;
             NoGamesFound = false;

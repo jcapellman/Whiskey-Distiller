@@ -6,13 +6,13 @@ namespace WhiskeyDistiller.library.Views
 {
 	public partial class MainGamePage : ContentPage
 	{
-        private MainGamePageVM ViewModel => (MainGamePageVM)BindingContext;
+        private MainGamePageVm ViewModel => (MainGamePageVm)BindingContext;
 
 		public MainGamePage ()
 		{
 			InitializeComponent ();
 
-            BindingContext = new MainGamePageVM(Navigation);
+            BindingContext = new MainGamePageVm(Navigation);
 		}
 	}
 }

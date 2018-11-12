@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class SavePageVM : BaseVM
+    public class SavePageVm : BaseVm
     {
         private bool _gamesListVisible;
 
@@ -41,7 +41,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public List<Game> Games
         {
-            get { return _games; }
+            get => _games;
             set { _games = value; OnPropertyChanged("Games"); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
         }
 
@@ -49,7 +49,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public string NewSaveGameName
         {
-            get { return _newSaveGameName; }
+            get => _newSaveGameName;
             set { _newSaveGameName = value; OnPropertyChanged("NewSaveGameName"); }
         }
 
@@ -63,7 +63,7 @@ namespace WhiskeyDistiller.library.ViewModels
             IoC.GameManager.OverwriteSameGame(game);
         });
 
-        public SavePageVM(INavigation navigation) : base(navigation)
+        public SavePageVm(INavigation navigation) : base(navigation)
         {
             GamesListVisible = false;
             NoGamesFound = false;

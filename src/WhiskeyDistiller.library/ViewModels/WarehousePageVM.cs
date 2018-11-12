@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class WarehousePageVM : BaseVM
+    public class WarehousePageVm : BaseVm
     {
-        public WarehousePageVM(INavigation navigation) : base(navigation)
+        public WarehousePageVm(INavigation navigation) : base(navigation)
         {
         }
 

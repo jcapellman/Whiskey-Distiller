@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class NewGamePageVM : BaseVM
+    public class NewGamePageVm : BaseVm
     {
         private string _distillerName;
 
@@ -47,8 +47,7 @@ namespace WhiskeyDistiller.library.ViewModels
             }
         }
 
-        public NewGamePageVM(INavigation navigation) : base(navigation) {
-        }
+        public NewGamePageVm(INavigation navigation) : base(navigation) { }
 
         public void InitForm()
         {
