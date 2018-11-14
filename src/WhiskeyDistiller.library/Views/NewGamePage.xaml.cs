@@ -8,7 +8,7 @@ namespace WhiskeyDistiller.library.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewGamePage : ContentPage
 	{
-        private NewGamePageVm viewModel => (NewGamePageVm)BindingContext;
+        private NewGamePageVm ViewModel => (NewGamePageVm)BindingContext;
 
 		public NewGamePage ()
 		{
@@ -19,7 +19,7 @@ namespace WhiskeyDistiller.library.Views
 
         protected override void OnAppearing()
         {
-            viewModel.InitForm();
+            ViewModel.InitForm();
         }
     }
 }
