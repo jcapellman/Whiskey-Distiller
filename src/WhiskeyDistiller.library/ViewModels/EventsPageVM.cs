@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 
@@ -13,7 +14,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public List<Event> Events
         {
             get => _events;
-            set { _events = value; OnPropertyChanged("Events"); }
+            set { _events = value; OnPropertyChanged(nameof(Events)); }
         }
 
         public EventsPageVm(INavigation navigation) : base(navigation)

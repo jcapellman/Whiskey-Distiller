@@ -20,7 +20,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _gamesListVisible = value;
-                OnPropertyChanged("GamesListVisible");
+                OnPropertyChanged(nameof(GamesListVisible));
             }
         }
 
@@ -33,7 +33,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _noGamesFound = value;
-                OnPropertyChanged("NoGamesFound");
+                OnPropertyChanged(nameof(NoGamesFound));
             }
         }
 
@@ -42,7 +42,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public List<Game> Games
         {
             get => _games;
-            set { _games = value; OnPropertyChanged("Games"); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
+            set { _games = value; OnPropertyChanged(nameof(Games)); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
         }
 
         private string _newSaveGameName;
@@ -50,7 +50,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public string NewSaveGameName
         {
             get => _newSaveGameName;
-            set { _newSaveGameName = value; OnPropertyChanged("NewSaveGameName"); }
+            set { _newSaveGameName = value; OnPropertyChanged(nameof(NewSaveGameName)); }
         }
 
         public ICommand SaveGameCommand => new Command<Game>((obj) =>

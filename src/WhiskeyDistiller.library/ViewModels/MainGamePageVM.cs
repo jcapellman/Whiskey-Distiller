@@ -15,7 +15,12 @@ namespace WhiskeyDistiller.library.ViewModels
         public Game CurrentGame
         {
             get => _currentGame;
-            set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
+
+            set
+            {
+                _currentGame = value;
+                OnPropertyChanged(nameof(CurrentGame));
+            }
         }
 
         public ICommand ShowOptionsCommand => NavigateCommand<InGameMenuPage>();

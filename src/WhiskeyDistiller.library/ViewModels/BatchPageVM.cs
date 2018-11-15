@@ -13,7 +13,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public List<Release> CurrentReleases
         {
             get => _currentReleases;
-            set { _currentReleases = value; OnPropertyChanged("CurrentReleases"); }
+            set { _currentReleases = value; OnPropertyChanged(nameof(CurrentReleases)); }
         }
 
         public BatchPageVm(INavigation navigation) : base(navigation)
