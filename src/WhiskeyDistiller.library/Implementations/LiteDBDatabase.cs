@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 
+using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 using WhiskeyDistiller.library.Interfaces;
 
@@ -13,9 +14,7 @@ namespace WhiskeyDistiller.library.Implementations
 {
     public class LiteDbDatabase : IDatabase
     {
-        private const string DbFileName = "game.db";
-
-        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, DbFileName);
+        private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, Constants.DB_FILENAME);
 
         public bool InitializeDB()
         {
