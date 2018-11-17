@@ -8,15 +8,11 @@ namespace WhiskeyDistiller.library.Common
 
         public T Object => Value;
 
-        private readonly Exception _error;
+        public bool HasError => Error != null;
 
-        public bool HasError => _error != null;
+        public Exception Error { get; }
 
-        public Exception Error => _error;
-
-        private readonly string _additionalErrorInformation;
-
-        public string AdditionalErrorInformation => _additionalErrorInformation;
+        public string AdditionalErrorInformation { get; }
 
         public ReturnSet(T objvalue)
         {
@@ -25,8 +21,10 @@ namespace WhiskeyDistiller.library.Common
 
         public ReturnSet(Exception exception, string additionalErrorInformation = null)
         {
-            _error = exception;
-            _additionalErrorInformation = additionalErrorInformation;
+            Error = exception;
+            AdditionalErrorInformation = additionalErrorInformation;
+
+            NLog.LogManager.GetCurrentClassLogger().Error(exception, message: additionalErrorInformation);
         }
     }
 }
