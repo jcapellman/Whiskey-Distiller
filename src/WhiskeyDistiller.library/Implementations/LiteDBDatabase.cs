@@ -16,18 +16,18 @@ namespace WhiskeyDistiller.library.Implementations
     {
         private readonly string _dbFileName = Path.Combine(DependencyService.Get<IFileIO>().GamePath, Constants.DB_FILENAME);
 
-        public bool InitializeDB()
+        public ReturnSet<bool> InitializeDB()
         {
-            return true;
+            return new ReturnSet<bool>(true);
         }
 
-        public bool Add<T>(T obj) where T : BaseTable
+        public ReturnSet<bool> Add<T>(T obj) where T : BaseTable
         {
             using (var db = new LiteDB.LiteDatabase(_dbFileName))
             {
                 var collection = db.GetCollection<T>();
 
-                return collection.Insert(obj);
+                return new ReturnSet<bool>(collection.Insert(obj));
             }
         }
 
@@ -36,38 +36,38 @@ namespace WhiskeyDistiller.library.Implementations
         /// </summary>
         /// <param name="tableType"></param>
         /// <returns></returns>
-        public bool CreateTable(Type tableType) => true;
+        public ReturnSet<bool> CreateTable(Type tableType) => new ReturnSet<bool>(true);
 
-        public List<T> Select<T>(Expression<Func<T, bool>> expression) where T : new()
+        public ReturnSet<List<T>> Select<T>(Expression<Func<T, bool>> expression) where T : new()
         {
             using (var db = new LiteDB.LiteDatabase(_dbFileName))
             {
                 var collection = db.GetCollection<T>();
 
-                return collection.Find(expression).ToList();
+                return new ReturnSet<List<T>>(collection.Find(expression).ToList());
             }
         }
 
-        public void Remove<T>(T obj) where T : BaseTable
+        public ReturnSet<bool> Remove<T>(T obj) where T : BaseTable
         {
             using (var db = new LiteDB.LiteDatabase(_dbFileName))
             {
                 if (obj == null)
                 {
-                    return;
+                    return new ReturnSet<bool>(false);
                 }
 
                 var collection = db.GetCollection<T>();
 
-                collection.Delete(obj.ID);
+                return new ReturnSet<bool>(collection.Delete(obj.ID));
             }
         }
 
-        public void Update<T>(T obj) where T : BaseTable
+        public ReturnSet<bool> Update<T>(T obj) where T : BaseTable
         {
             using (var db = new LiteDB.LiteDatabase(_dbFileName))
             {
-                db.GetCollection<T>().Update(obj);
+                return new ReturnSet<bool>(db.GetCollection<T>().Update(obj));
             }
         }
     }

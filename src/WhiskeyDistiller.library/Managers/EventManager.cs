@@ -26,10 +26,14 @@ namespace WhiskeyDistiller.library.Managers
         {
             try
             {
-                var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameId && !a.Read)
-                    .OrderByDescending(a => a.Date).ToList();
+                var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameId && !a.Read);
 
-                return new ReturnSet<List<Event>>(events);
+                if (events.HasError)
+                {
+                    throw events.Error;
+                }
+                
+                return new ReturnSet<List<Event>>(events.Object.OrderByDescending(a => a.Date).ToList());
             }
             catch (Exception ex)
             {

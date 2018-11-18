@@ -46,8 +46,17 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
-        public List<Game> GetSavedGames() => 
-            IoC.DatabaseManager.Select<Game>(a => a != null).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        public List<Game> GetSavedGames()
+        {
+            var gameResults = IoC.DatabaseManager.Select<Game>(a => a != null);
+
+            if (gameResults.HasError)
+            {
+                throw gameResults.Error;
+            }
+            
+            return gameResults.Object.OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        }
 
         internal void SaveNewGame(string newSaveGameName)
         {
@@ -61,9 +70,23 @@ namespace WhiskeyDistiller.library.Managers
 
         private void ProcessCosts()
         {
-            var warehouses = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID).Select(a => a.ID).ToList();
+            var warehouseResults = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID);
 
-            var numberBarrels = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseID)).Sum(a => a.NumberOfBarrels);
+            if (warehouseResults.HasError)
+            {
+                throw warehouseResults.Error;
+            }
+
+            var warehouses = warehouseResults.Object.Select(a => a.ID).ToList();
+
+            var batchesResult = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseID));
+
+            if (batchesResult.HasError)
+            {
+                throw batchesResult.Error;
+            }
+
+            var numberBarrels = batchesResult.Object.Sum(a => a.NumberOfBarrels);
 
             var totalCost = numberBarrels * Constants.COST_PER_BARREL;
 
