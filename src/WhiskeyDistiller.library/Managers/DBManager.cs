@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 using WhiskeyDistiller.library.Interfaces;
 
@@ -27,11 +28,25 @@ namespace WhiskeyDistiller.library.Managers
             _database.Remove(obj);
         }
 
-        public void Update(Warehouse warehouse)
+        public ReturnSet<bool> Update(Warehouse warehouse)
         {
-            warehouse.Modified = DateTime.Now;
-            
-            _database.Update(warehouse);
+            try
+            {
+                if (warehouse == null)
+                {
+                    throw new ArgumentNullException(nameof(warehouse));
+                }
+
+                warehouse.Modified = DateTime.Now;
+
+                _database.Update(warehouse);
+
+                return new ReturnSet<bool>(true);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnSet<bool>(ex, "Warehouse exception");
+            }
         }
     }
 }
