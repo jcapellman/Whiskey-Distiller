@@ -23,9 +23,23 @@ namespace WhiskeyDistiller.library.Managers
 
         public List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new() => _database.Select(expression);
 
-        public void Remove<T>(T obj) where T: BaseTable
+        public ReturnSet<bool> Remove<T>(T obj) where T : BaseTable
         {
-            _database.Remove(obj);
+            try
+            {
+                if (obj == null)
+                {
+                    throw new ArgumentNullException(nameof(obj));
+                }
+
+                _database.Remove(obj);
+
+                return new ReturnSet<bool>(true);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnSet<bool>(ex, "Failed to remove object");
+            }
         }
 
         public ReturnSet<bool> Update(Warehouse warehouse)
