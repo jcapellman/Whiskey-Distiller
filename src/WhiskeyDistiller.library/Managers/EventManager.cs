@@ -9,7 +9,7 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class EventManager : BaseManager
     {
-        public void AddEvent(string description, int gameId, string date)
+        public ReturnSet<bool> AddEvent(string description, int gameId, string date)
         {
             var eventRow = new Event
             {
@@ -19,7 +19,7 @@ namespace WhiskeyDistiller.library.Managers
                 Read = false
             };
 
-            IoC.DatabaseManager.Add(eventRow);
+            return IoC.DatabaseManager.Add(eventRow);
         }
 
         public ReturnSet<List<Event>> GetEvents(int gameId)
