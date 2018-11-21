@@ -13,12 +13,24 @@ namespace WhiskeyDistiller.library.Managers
 
         public DbManager(IDatabase database) { _database = database; }
 
-        public void Add<T>(T obj) where T : BaseTable
+        public ReturnSet<bool> Add<T>(T obj) where T : BaseTable
         {
-            obj.Modified = DateTime.Now;
-            obj.Created = DateTime.Now;
-            
-            _database.Add(obj);
+            try
+            {
+                if (obj == null)
+                {
+                    throw new ArgumentNullException(nameof(obj));
+                }
+
+                obj.Modified = DateTime.Now;
+                obj.Created = DateTime.Now;
+
+                return _database.Add(obj);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnSet<bool>(ex, "Attempting to add Object");
+            }
         }
 
         public ReturnSet<List<T>> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new() => _database.Select(expression);
