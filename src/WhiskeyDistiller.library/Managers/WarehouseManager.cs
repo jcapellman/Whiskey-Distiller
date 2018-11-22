@@ -8,7 +8,7 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class WarehouseManager : BaseManager
     { 
-        public void AddWarehouse(int gameId, string name, WarehouseTypes warehouseType)
+        public ReturnSet<bool> AddWarehouse(int gameId, string name, WarehouseTypes warehouseType)
         {
             var warehouse = new Warehouse
             {
@@ -17,13 +17,14 @@ namespace WhiskeyDistiller.library.Managers
                 WarehouseType = warehouseType
             };
 
-            IoC.DatabaseManager.Add(warehouse);
+            return IoC.DatabaseManager.Add(warehouse);
         }
         
-        public void RenameWarehouse(string newName, Warehouse warehouse)
+        public ReturnSet<bool> RenameWarehouse(string newName, Warehouse warehouse)
         {
             warehouse.Name = newName;
-            IoC.DatabaseManager.Update(warehouse);
+
+            return IoC.DatabaseManager.Update(warehouse);
         }
 
         public List<Warehouse> GetWarehouses(int gameId)
@@ -38,9 +39,6 @@ namespace WhiskeyDistiller.library.Managers
             return result.Object;
         }
 
-        public void RemoveWarehouse(Warehouse warehouse)
-        {
-            IoC.DatabaseManager.Remove(warehouse);
-        }
+        public ReturnSet<bool> RemoveWarehouse(Warehouse warehouse) => IoC.DatabaseManager.Remove(warehouse);
     }
 }
