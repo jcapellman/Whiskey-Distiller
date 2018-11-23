@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
@@ -22,9 +23,21 @@ namespace WhiskeyDistiller.library.Managers
         
         public ReturnSet<bool> RenameWarehouse(string newName, Warehouse warehouse)
         {
-            warehouse.Name = newName;
+            try
+            {
+                if (warehouse == null)
+                {
+                    throw new ArgumentNullException(nameof(warehouse));
+                }
 
-            return IoC.DatabaseManager.Update(warehouse);
+                warehouse.Name = newName;
+
+                return IoC.DatabaseManager.Update(warehouse);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnSet<bool>(ex, "Renaming warehhouse");
+            }
         }
 
         public List<Warehouse> GetWarehouses(int gameId)
