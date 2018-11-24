@@ -40,17 +40,7 @@ namespace WhiskeyDistiller.library.Managers
             }
         }
 
-        public List<Warehouse> GetWarehouses(int gameId)
-        {
-            var result = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == gameId);
-
-            if (result.HasError)
-            {
-                throw result.Error;
-            }
-
-            return result.Object;
-        }
+        public ReturnSet<List<Warehouse>> GetWarehouses(int gameId) => IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == gameId);
 
         public ReturnSet<bool> RemoveWarehouse(Warehouse warehouse) => IoC.DatabaseManager.Remove(warehouse);
     }
