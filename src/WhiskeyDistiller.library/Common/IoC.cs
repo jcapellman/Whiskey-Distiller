@@ -7,7 +7,7 @@ namespace WhiskeyDistiller.library.Common
 {
     public static class IoC
     {
-        private static IKernel Kernel { get; set; } = new StandardKernel();
+        private static IKernel Kernel { get; } = new StandardKernel();
 
         public static DbManager DatabaseManager => Kernel.Get<DbManager>();
 

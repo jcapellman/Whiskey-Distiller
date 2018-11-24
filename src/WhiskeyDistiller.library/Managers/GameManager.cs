@@ -70,16 +70,16 @@ namespace WhiskeyDistiller.library.Managers
 
         private void ProcessCosts()
         {
-            var warehouseResults = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID);
+            var warehouseResults = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.Id);
 
             if (warehouseResults.HasError)
             {
                 throw warehouseResults.Error;
             }
 
-            var warehouses = warehouseResults.Object.Select(a => a.ID).ToList();
+            var warehouses = warehouseResults.Object.Select(a => a.Id).ToList();
 
-            var batchesResult = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseID));
+            var batchesResult = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseId));
 
             if (batchesResult.HasError)
             {

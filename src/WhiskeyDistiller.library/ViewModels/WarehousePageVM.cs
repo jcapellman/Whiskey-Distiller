@@ -29,7 +29,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public void AddWarehouse()
         {
-            IoC.WarehouseManager.AddWarehouse(IoC.GameManager.CurrentGame.ID, GameName, WarehouseType);
+            IoC.WarehouseManager.AddWarehouse(IoC.GameManager.CurrentGame.Id, GameName, WarehouseType);
         }
     }
 }

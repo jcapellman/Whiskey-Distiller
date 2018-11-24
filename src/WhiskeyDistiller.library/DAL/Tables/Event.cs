@@ -6,7 +6,7 @@
 
         public string Description { get; set; }
 
-        public int GameID { get; set; }
+        public int GameId { get; set; }
 
         public bool Read { get; set; }
     }

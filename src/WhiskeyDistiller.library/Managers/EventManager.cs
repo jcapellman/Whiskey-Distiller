@@ -15,7 +15,7 @@ namespace WhiskeyDistiller.library.Managers
             {
                 Date = date,
                 Description = description,
-                GameID = gameId,
+                GameId = gameId,
                 Read = false
             };
 
@@ -26,7 +26,7 @@ namespace WhiskeyDistiller.library.Managers
         {
             try
             {
-                var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameId && !a.Read);
+                var events = IoC.DatabaseManager.Select<Event>(a => a.GameId == gameId && !a.Read);
 
                 if (events.HasError)
                 {

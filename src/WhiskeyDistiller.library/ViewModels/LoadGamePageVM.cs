@@ -57,7 +57,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand LoadGameCommand => new Command<Game>(async (game) =>
         {
-            await Navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.ID));
+            await Navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.Id));
         });
 
         public LoadGamePageVm(INavigation navigation) : base(navigation)

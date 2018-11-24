@@ -59,7 +59,7 @@ namespace WhiskeyDistiller.library.Implementations
 
                 var collection = db.GetCollection<T>();
 
-                return new ReturnSet<bool>(collection.Delete(obj.ID));
+                return new ReturnSet<bool>(collection.Delete(obj.Id));
             }
         }
 

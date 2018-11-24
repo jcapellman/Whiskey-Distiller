@@ -19,7 +19,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public EventsPageVm(INavigation navigation) : base(navigation)
         {
-            var eventsResult = IoC.EventManager.GetEvents(IoC.GameManager.CurrentGame.ID);
+            var eventsResult = IoC.EventManager.GetEvents(IoC.GameManager.CurrentGame.Id);
 
             if (!eventsResult.HasError)
             {   
