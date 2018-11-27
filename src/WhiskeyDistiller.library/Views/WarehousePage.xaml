@@ -28,7 +28,13 @@
             </Grid>
 
             <Grid Grid.Row="2" Style="{StaticResource Footer}">
-                <Button Text="Return to Game" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Text="Return to Game" Style="{StaticResource BackButton}" Command="{Binding GoBackCommand}" />
+                <Button Grid.Column="1" Text="Add Warehouse" Style="{StaticResource NextButton}" />
             </Grid>
         </Grid>
     </ContentPage.Content>
