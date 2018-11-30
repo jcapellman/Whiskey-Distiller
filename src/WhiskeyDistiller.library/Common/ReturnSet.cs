@@ -4,9 +4,7 @@ namespace WhiskeyDistiller.library.Common
 {
     public class ReturnSet<T>
     {
-        public T Value;
-
-        public T Object => Value;
+        public T Object;
 
         public bool HasError => Error != null;
 
@@ -14,9 +12,9 @@ namespace WhiskeyDistiller.library.Common
 
         public string AdditionalErrorInformation { get; }
 
-        public ReturnSet(T objvalue)
+        public ReturnSet(T objectValue)
         {
-            Value = objvalue;
+            Object = objectValue;
         }
 
         public ReturnSet(Exception exception, string additionalErrorInformation = null)
