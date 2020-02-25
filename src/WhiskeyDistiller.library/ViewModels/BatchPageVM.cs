@@ -6,17 +6,17 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class BatchPageVM : BaseVM
+    public class BatchPageVm : BaseVm
     {
         private List<Release> _currentReleases;
 
         public List<Release> CurrentReleases
         {
-            get { return _currentReleases; }
-            set { _currentReleases = value; OnPropertyChanged("CurrentReleases"); }
+            get => _currentReleases;
+            set { _currentReleases = value; OnPropertyChanged(nameof(CurrentReleases)); }
         }
 
-        public BatchPageVM(INavigation navigation) : base(navigation)
+        public BatchPageVm(INavigation navigation) : base(navigation)
         {
         }
     }

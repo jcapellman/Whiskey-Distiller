@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using WhiskeyDistiller.library.Common;
@@ -8,24 +9,36 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class EventManager : BaseManager
     {
-        public void AddEvent(string description, int gameID, string date)
+        public ReturnSet<bool> AddEvent(string description, int gameId, string date)
         {
             var eventRow = new Event
             {
                 Date = date,
                 Description = description,
-                GameID = gameID,
+                GameId = gameId,
                 Read = false
             };
 
-            IoC.DatabaseManager.Add(eventRow);
+            return IoC.DatabaseManager.Add(eventRow);
         }
 
-        public List<Event> GetEvents(int gameID)
+        public ReturnSet<List<Event>> GetEvents(int gameId)
         {
-            var events = IoC.DatabaseManager.Select<Event>(a => a.GameID == gameID && a.Active && !a.Read).OrderByDescending(a => a.Date).ToList();
+            try
+            {
+                var events = IoC.DatabaseManager.Select<Event>(a => a.GameId == gameId && !a.Read);
 
-            return events;
+                if (events.HasError)
+                {
+                    throw events.Error;
+                }
+                
+                return new ReturnSet<List<Event>>(events.Object.OrderByDescending(a => a.Date).ToList());
+            }
+            catch (Exception ex)
+            {
+                return new ReturnSet<List<Event>>(ex, $"{gameId}");
+            }
         }
     }
 }

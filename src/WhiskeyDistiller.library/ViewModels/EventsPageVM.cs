@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 
@@ -6,19 +7,24 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class EventsPageVM : BaseVM
+    public class EventsPageVm : BaseVm
     {
         private List<Event> _events;
 
         public List<Event> Events
         {
-            get { return _events; }
-            set { _events = value; OnPropertyChanged("Events"); }
+            get => _events;
+            set { _events = value; OnPropertyChanged(nameof(Events)); }
         }
 
-        public EventsPageVM(INavigation navigation) : base(navigation)
+        public EventsPageVm(INavigation navigation) : base(navigation)
         {
-            Events = IoC.EventManager.GetEvents(IoC.GameManager.CurrentGame.ID);
+            var eventsResult = IoC.EventManager.GetEvents(IoC.GameManager.CurrentGame.Id);
+
+            if (!eventsResult.HasError)
+            {   
+                Events = eventsResult.Object;
+            }
         }
     }
 }

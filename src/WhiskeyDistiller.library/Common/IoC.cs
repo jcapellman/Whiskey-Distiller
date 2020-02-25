@@ -7,9 +7,9 @@ namespace WhiskeyDistiller.library.Common
 {
     public static class IoC
     {
-        private static IKernel Kernel { get; set; } = new StandardKernel();
+        private static IKernel Kernel { get; } = new StandardKernel();
 
-        public static DBManager DatabaseManager => Kernel.Get<DBManager>();
+        public static DbManager DatabaseManager => Kernel.Get<DbManager>();
 
         public static GameManager GameManager => Kernel.Get<GameManager>();
 
@@ -19,11 +19,11 @@ namespace WhiskeyDistiller.library.Common
 
         public static void Setup()
         {
-            var sqliteDatabase = new SQLiteDatabase();
+            var liteDbDatabase = new LiteDbDatabase();
 
-            sqliteDatabase.InitializeDB();
+            liteDbDatabase.InitializeDB();
 
-            Kernel.Bind<DBManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", sqliteDatabase);
+            Kernel.Bind<DbManager>().ToSelf().InSingletonScope().WithConstructorArgument("database", liteDbDatabase);
             Kernel.Bind<GameManager>().ToSelf().InSingletonScope();
             Kernel.Bind<WarehouseManager>().ToSelf().InSingletonScope();
             Kernel.Bind<EventManager>().ToSelf().InSingletonScope();

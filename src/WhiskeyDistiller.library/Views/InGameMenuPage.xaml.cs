@@ -12,7 +12,7 @@ namespace WhiskeyDistiller.library.Views
 		{
 			InitializeComponent ();
 
-            BindingContext = new InGameMenuPageVM(Navigation);
+            BindingContext = new InGameMenuPageVm(Navigation);
 		}
 	}
 }

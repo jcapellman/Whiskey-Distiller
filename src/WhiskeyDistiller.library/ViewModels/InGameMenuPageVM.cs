@@ -6,11 +6,11 @@ using WhiskeyDistiller.library.Views;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class InGameMenuPageVM : BaseVM
+    public class InGameMenuPageVm : BaseVm
     {
         public ICommand GotoSaveGameCommand => NavigateCommand<SavePage>();
 
-        public InGameMenuPageVM(INavigation navigation) : base(navigation)
+        public InGameMenuPageVm(INavigation navigation) : base(navigation)
         {
         }
     }

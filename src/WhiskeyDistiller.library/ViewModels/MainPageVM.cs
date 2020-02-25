@@ -6,7 +6,7 @@ using WhiskeyDistiller.library.Views;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class MainPageVM : BaseVM
+    public class MainPageVm : BaseVm
     {
         public ICommand NewGameCommand => NavigateCommand<NewGamePage>();
 
@@ -16,7 +16,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand AboutCommand => NavigateCommand<AboutPage>();
 
-        public MainPageVM(INavigation navigation) : base(navigation)
+        public MainPageVm(INavigation navigation) : base(navigation)
         {         
         }
     }

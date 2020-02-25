@@ -7,7 +7,7 @@ namespace WhiskeyDistiller.library.DAL.Tables
     public class Batch : BaseTable
     {
         [Required]
-        public int WarehouseID { get; set; }
+        public int WarehouseId { get; set; }
 
         [Required]
         public string Name { get; set; }

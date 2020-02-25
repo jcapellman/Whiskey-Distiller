@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class SavePageVM : BaseVM
+    public class SavePageVm : BaseVm
     {
         private bool _gamesListVisible;
 
@@ -20,7 +20,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _gamesListVisible = value;
-                OnPropertyChanged("GamesListVisible");
+                OnPropertyChanged(nameof(GamesListVisible));
             }
         }
 
@@ -33,7 +33,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _noGamesFound = value;
-                OnPropertyChanged("NoGamesFound");
+                OnPropertyChanged(nameof(NoGamesFound));
             }
         }
 
@@ -41,16 +41,16 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public List<Game> Games
         {
-            get { return _games; }
-            set { _games = value; OnPropertyChanged("Games"); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
+            get => _games;
+            set { _games = value; OnPropertyChanged(nameof(Games)); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
         }
 
         private string _newSaveGameName;
 
         public string NewSaveGameName
         {
-            get { return _newSaveGameName; }
-            set { _newSaveGameName = value; OnPropertyChanged("NewSaveGameName"); }
+            get => _newSaveGameName;
+            set { _newSaveGameName = value; OnPropertyChanged(nameof(NewSaveGameName)); }
         }
 
         public ICommand SaveGameCommand => new Command<Game>((obj) =>
@@ -63,7 +63,7 @@ namespace WhiskeyDistiller.library.ViewModels
             IoC.GameManager.OverwriteSameGame(game);
         });
 
-        public SavePageVM(INavigation navigation) : base(navigation)
+        public SavePageVm(INavigation navigation) : base(navigation)
         {
             GamesListVisible = false;
             NoGamesFound = false;

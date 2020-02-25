@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using WhiskeyDistiller.library.Common;
 using WhiskeyDistiller.library.DAL.Tables;
 
 namespace WhiskeyDistiller.library.Interfaces
 {
     public interface IDatabase
     {
-        bool InitializeDB();
+        ReturnSet<bool> InitializeDB();
 
-        bool Add<T>(T obj) where T : BaseTable;
+        ReturnSet<bool> Add<T>(T obj) where T : BaseTable;
 
-        bool CreateTable(Type tableType);
+        ReturnSet<bool> CreateTable(Type tableType);
 
-        List<T> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new();
+        ReturnSet<List<T>> Select<T>(System.Linq.Expressions.Expression<Func<T, bool>> expression) where T : new();
 
-        void Remove<T>(T obj) where T : BaseTable;
+        ReturnSet<bool> Remove<T>(T obj) where T : BaseTable;
 
-        void Update<T>(T obj) where T : BaseTable;
+        ReturnSet<bool> Update<T>(T obj) where T : BaseTable;
     }
 }

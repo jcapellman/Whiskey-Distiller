@@ -9,27 +9,21 @@ namespace WhiskeyDistiller.library.Managers
 {
     public class GameManager : BaseManager
     {
-        private const double NEWGAME_INITIAL_CASH = 100;
-        private int NEWGAME_INITIAL_GAMEYEAR = DateTime.Now.Year;
-        private const int NEWGAME_INITAL_GAMEQUARTER = 1;
+        private const double NewgameInitialCash = 100;
+        private readonly int _newgameInitialGameyear = DateTime.Now.Year;
+        private const int NewgameInitalGamequarter = 1;
 
-        private Game _currentGame;
+        public Game CurrentGame { get; set; }
 
-        public Game CurrentGame
-        {
-            get { return _currentGame; }
-            set { _currentGame = value; }
-        }
-        
         public bool CreateNewGame(string distilleryName, string playerName)
         {
             var game = new Game
             {
                 DistilleryName = distilleryName,
                 PlayerName = playerName,
-                Cash = NEWGAME_INITIAL_CASH,
-                GameYear = NEWGAME_INITIAL_GAMEYEAR,
-                GameQuarter = NEWGAME_INITAL_GAMEQUARTER
+                Cash = NewgameInitialCash,
+                GameYear = _newgameInitialGameyear,
+                GameQuarter = NewgameInitalGamequarter
             };
 
             IoC.DatabaseManager.Add(game);
@@ -52,7 +46,17 @@ namespace WhiskeyDistiller.library.Managers
             CurrentGame.GameQuarter++;
         }
 
-        public List<Game> GetSavedGames() => IoC.DatabaseManager.Select<Game>(a => a.Active).OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        public List<Game> GetSavedGames()
+        {
+            var gameResults = IoC.DatabaseManager.Select<Game>(a => a != null);
+
+            if (gameResults.HasError)
+            {
+                throw gameResults.Error;
+            }
+            
+            return gameResults.Object.OrderByDescending(a => a.GameYear).ThenByDescending(a => a.GameQuarter).ToList();
+        }
 
         internal void SaveNewGame(string newSaveGameName)
         {
@@ -66,9 +70,23 @@ namespace WhiskeyDistiller.library.Managers
 
         private void ProcessCosts()
         {
-            var warehouses = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.ID).Select(a => a.ID).ToList();
+            var warehouseResults = IoC.DatabaseManager.Select<Warehouse>(a => a.GameID == CurrentGame.Id);
 
-            var numberBarrels = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseID)).Sum(a => a.NumberOfBarrels);
+            if (warehouseResults.HasError)
+            {
+                throw warehouseResults.Error;
+            }
+
+            var warehouses = warehouseResults.Object.Select(a => a.Id).ToList();
+
+            var batchesResult = IoC.DatabaseManager.Select<Batch>(a => warehouses.Contains(a.WarehouseId));
+
+            if (batchesResult.HasError)
+            {
+                throw batchesResult.Error;
+            }
+
+            var numberBarrels = batchesResult.Object.Sum(a => a.NumberOfBarrels);
 
             var totalCost = numberBarrels * Constants.COST_PER_BARREL;
 

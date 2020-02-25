@@ -7,14 +7,20 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class NewGamePageVM : BaseVM
+    public class NewGamePageVm : BaseVm
     {
         private string _distillerName;
 
         public string DistillerName
         {
             get => _distillerName;
-            set { _distillerName = value; OnPropertyChanged("DistillerName"); CheckForm(); }
+            set
+            {
+                _distillerName = value;
+                OnPropertyChanged(nameof(DistillerName));
+
+                CheckForm();
+            }
         }
 
         private string _playerName;
@@ -22,7 +28,13 @@ namespace WhiskeyDistiller.library.ViewModels
         public string PlayerName
         {
             get => _playerName;
-            set { _playerName = value; OnPropertyChanged("PlayerName"); CheckForm(); }
+
+            set {
+                _playerName = value;
+                OnPropertyChanged(nameof(PlayerName));
+
+                CheckForm();
+            }
         }
 
         private void CheckForm()
@@ -35,7 +47,7 @@ namespace WhiskeyDistiller.library.ViewModels
         public bool EnableStartGameButton
         {
             get => _enableStartGameButton;
-            set { _enableStartGameButton = value; OnPropertyChanged("EnableStartGameButton"); }
+            set { _enableStartGameButton = value; OnPropertyChanged(nameof(EnableStartGameButton)); }
         }
 
         public ICommand StartGameCommand {
@@ -47,8 +59,7 @@ namespace WhiskeyDistiller.library.ViewModels
             }
         }
 
-        public NewGamePageVM(INavigation navigation) : base(navigation) {
-        }
+        public NewGamePageVm(INavigation navigation) : base(navigation) { }
 
         public void InitForm()
         {

@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class LoadGamePageVM : BaseVM
+    public class LoadGamePageVm : BaseVm
     {
         private bool _gamesListVisible;
 
@@ -22,7 +22,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _gamesListVisible = value;
-                OnPropertyChanged("GamesListVisible");
+                OnPropertyChanged(nameof(GamesListVisible));
             }
         }
 
@@ -35,7 +35,7 @@ namespace WhiskeyDistiller.library.ViewModels
             private set
             {
                 _noGamesFound = value;
-                OnPropertyChanged("NoGamesFound");
+                OnPropertyChanged(nameof(NoGamesFound));
             }
         }
 
@@ -43,16 +43,24 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public List<Game> Games
         {
-            get { return _games; }
-            set { _games = value; OnPropertyChanged("Games"); GamesListVisible = value.Any(); NoGamesFound = !value.Any(); }
+            get => _games;
+
+            set
+            {
+                _games = value;
+                OnPropertyChanged(nameof(Games));
+
+                GamesListVisible = value.Any();
+                NoGamesFound = !value.Any();
+            }
         }
 
         public ICommand LoadGameCommand => new Command<Game>(async (game) =>
         {
-            await _navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.ID));
+            await Navigation.PushModalAsync((MainGamePage)Activator.CreateInstance(typeof(MainGamePage), game.Id));
         });
 
-        public LoadGamePageVM(INavigation navigation) : base(navigation)
+        public LoadGamePageVm(INavigation navigation) : base(navigation)
         {
             GamesListVisible = false;
             NoGamesFound = false;

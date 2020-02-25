@@ -8,14 +8,19 @@ using Xamarin.Forms;
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class MainGamePageVM : BaseVM
+    public class MainGamePageVm : BaseVm
     {
         private Game _currentGame;
 
         public Game CurrentGame
         {
             get => _currentGame;
-            set { _currentGame = value; OnPropertyChanged("CurrentGame"); }
+
+            set
+            {
+                _currentGame = value;
+                OnPropertyChanged(nameof(CurrentGame));
+            }
         }
 
         public ICommand ShowOptionsCommand => NavigateCommand<InGameMenuPage>();
@@ -28,7 +33,7 @@ namespace WhiskeyDistiller.library.ViewModels
 
         public ICommand GotoFinancialsCommand => NavigateCommand<FinancialsPage>();
 
-        public MainGamePageVM(INavigation navigation) : base(navigation)
+        public MainGamePageVm(INavigation navigation) : base(navigation)
         {
             CurrentGame = IoC.GameManager.CurrentGame;
         }

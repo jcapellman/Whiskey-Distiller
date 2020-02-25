@@ -2,9 +2,9 @@
 
 namespace WhiskeyDistiller.library.ViewModels
 {
-    public class FinancialsPageVM : BaseVM
+    public class FinancialsPageVm : BaseVm
     {
-        public FinancialsPageVM(INavigation navigation) : base(navigation)
+        public FinancialsPageVm(INavigation navigation) : base(navigation)
         {
         }
     }

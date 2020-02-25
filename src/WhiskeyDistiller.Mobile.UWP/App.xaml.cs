@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using WhiskeyDistiller.library.Common;
+using WhiskeyDistiller.Mobile.UWP.InterfaceImplementations;
 
 namespace WhiskeyDistiller.Mobile.UWP
 {
@@ -21,11 +22,9 @@ namespace WhiskeyDistiller.Mobile.UWP
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            IoC.Setup();
-
-            this.Suspending += OnSuspending;
+            Suspending += OnSuspending;
         }
 
         /// <summary>
@@ -35,9 +34,7 @@ namespace WhiskeyDistiller.Mobile.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-
-            Frame rootFrame = Window.Current.Content as Frame;
+            var rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -49,6 +46,9 @@ namespace WhiskeyDistiller.Mobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.Forms.DependencyService.Register<FileIO>();
+
+                IoC.Setup();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -66,6 +66,7 @@ namespace WhiskeyDistiller.Mobile.UWP
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -90,7 +91,6 @@ namespace WhiskeyDistiller.Mobile.UWP
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
     }

@@ -1,7 +1,6 @@
 ﻿using WhiskeyDistiller.library.ViewModels;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WhiskeyDistiller.library.Views
 {
@@ -11,7 +10,7 @@ namespace WhiskeyDistiller.library.Views
 		{
 			InitializeComponent();
 
-            BindingContext = new MainPageVM(this.Navigation);
+            BindingContext = new MainPageVm(Navigation);
 		}
 	}
 }
